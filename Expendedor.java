@@ -4,7 +4,7 @@ package org.example;
  * Representacion de una maquina expendedora
  */
 public class Expendedor {
-    private Deposito<Producto> coca;
+    private Deposito<Producto> cocacola;
     private Deposito<Producto> sprite;
     private Deposito<Producto> fanta;
     private Deposito<Producto> snickers;
@@ -18,7 +18,7 @@ public class Expendedor {
      * @param numProductos cuantos productos habra de cada tipo
      */
     public Expendedor(int numProductos) {
-        coca = new Deposito<>();
+        cocacola = new Deposito<>();
         sprite = new Deposito<>();
         fanta = new Deposito<>();
         snickers = new Deposito<>();
@@ -26,7 +26,7 @@ public class Expendedor {
         monVu = new Deposito<>();
 
         for (int i = 100; i < 100 + numProductos; i++) {
-            coca.addObject(new CocaCola(i));
+            cocacola.addObject(new CocaCola(i));
             sprite.addObject(new Sprite(i+100));
             fanta.addObject(new Fanta(i+200));
             snickers.addObject(new Snickers(i+300));
@@ -37,47 +37,34 @@ public class Expendedor {
     /**
      * Se asegura de que el producto y el vuelto sean el correcto
      * @param m para corroborar que se ingreso el dinero suficiente para efectuar la compra
-     * @param x el tipo de producto que se quiere comprar
+     * @param producto para seleccionar el producto a comprar
      * @return el producto pedido
      * @throws NoHayProductoException si no quedan productos del que se pide
      * @throws PagoIncorrectoException si no se ingresa una moneda
      * @throws PagoInsuficienteException si con la moneda ingresada no alcanza a comprar el producto
      * @throws ProductoIncorrectoException si el producto que se pide no existe en la expendedora
      */
-    public Producto comprarProducto(Moneda m, int x) throws NoHayProductoException, PagoIncorrectoException, PagoInsuficienteException, ProductoIncorrectoException {
+    public Producto comprarProducto(Moneda m, EnumProductos producto) throws NoHayProductoException, PagoIncorrectoException, PagoInsuficienteException, ProductoIncorrectoException {
         p = null;
         if (m == null) {
             throw new PagoIncorrectoException("Pago incorrecto");
         }
-        switch (x){
-            case 1:
-                p = coca.getObject();
-                precioProducto = EnumProductos.COCACOLA.getPrecio();
-                break;
-            case 2:
-                p = sprite.getObject();
-                precioProducto = EnumProductos.SPRITE.getPrecio();
-                break;
-            case 3:
-                p = fanta.getObject();
-                precioProducto = EnumProductos.FANTA.getPrecio();
-                break;
-            case 4:
-                p = snickers.getObject();
-                precioProducto = EnumProductos.SNICKERS.getPrecio();
-                break;
-            case 5:
-                p = super8.getObject();
-                precioProducto = EnumProductos.SUPER8.getPrecio();
-                break;
-            default:
-                throw new ProductoIncorrectoException("No existe el producto pedido", m);
+
+        switch (producto) {
+            case COCACOLA -> p = cocacola.getObject();
+            case SPRITE -> p = sprite.getObject();
+            case FANTA -> p = fanta.getObject();
+            case SNICKERS -> p = snickers.getObject();
+            case SUPER8 -> p = super8.getObject();
+            case null -> throw new ProductoIncorrectoException("No existe el producto pedido", m);
         }
 
         if (p == null) {
             monVu.addObject(m);
             throw new NoHayProductoException("No hay producto", m);
-        }
+        } else
+            precioProducto = p.getValor();
+
         if (m.getValor() >= precioProducto){
             for (int i = 0; m.getValor() > precioProducto + i; i += 100) {
                 monVu.addObject(new Moneda100());

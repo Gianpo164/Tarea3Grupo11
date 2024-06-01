@@ -18,7 +18,7 @@ public class Comprador {
      * @throws PagoIncorrectoException si no paso un moneda
      * @throws ProductoIncorrectoException si pide un producto que no existe en el expendedor
      */
-    public Comprador(Moneda m, int cual, Expendedor exp) throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException, ProductoIncorrectoException{
+    public Comprador(Moneda m, EnumProductos cual, Expendedor exp) throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException, ProductoIncorrectoException{
         expendedor = exp;
         Producto Producto = exp.comprarProducto(m, cual);
         for (Moneda i = expendedor.getVuelto(); i != null; i = expendedor.getVuelto()) {
