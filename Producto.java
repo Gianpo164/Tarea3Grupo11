@@ -16,6 +16,12 @@ public abstract class Producto {
     }
 
     /**
+     * Retorna el valor del producto
+     * @return el valor del producto
+     */
+    public abstract int getValor();
+
+    /**
      * Retorna la serie del producto
      * @return La serie del producto
      */
