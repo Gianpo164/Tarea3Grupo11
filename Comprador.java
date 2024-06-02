@@ -20,13 +20,10 @@ public class Comprador {
      */
     public Comprador(Moneda m, EnumProductos cual, Expendedor exp) throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException, ProductoIncorrectoException{
         expendedor = exp;
-        Producto Producto = exp.comprarProducto(m, cual);
+        exp.comprarProducto(m, cual);
         for (Moneda i = expendedor.getVuelto(); i != null; i = expendedor.getVuelto()) {
             vuelto += i.getValor();
         }
-        if (Producto == null) {
-            nproducto = null;
-        } else nproducto = Producto.consumir();
     }
     /**
      * Retorna el vuelto
@@ -41,6 +38,12 @@ public class Comprador {
      * @return el nombre del producto que adquirio
      */
     public String queConsumiste() {
+        Producto p = expendedor.getProductoComprado();
+        if (p == null) {
+            nproducto = null;
+        } else nproducto = p.consumir();
         return nproducto;
     }
+
+
 }
