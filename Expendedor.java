@@ -37,7 +37,7 @@ public class Expendedor {
      * @throws PagoInsuficienteException si con la moneda ingresada no alcanza a comprar el producto
      * @throws ProductoIncorrectoException si el producto que se pide no existe en la expendedora
      */
-    public Producto comprarProducto(Moneda m, EnumProductos producto) throws NoHayProductoException, PagoIncorrectoException, PagoInsuficienteException, ProductoIncorrectoException {
+    public void comprarProducto(Moneda m, EnumProductos producto) throws NoHayProductoException, PagoIncorrectoException, PagoInsuficienteException, ProductoIncorrectoException {
         p = null;
         if (producto == null){
             throw new ProductoIncorrectoException("No existe el producto pedido", m);
@@ -47,7 +47,7 @@ public class Expendedor {
         }
 
         int eleccion = producto.ordinal();
-        
+
         p = depositos[eleccion].getObject();
 
         if (p == null) {
@@ -64,10 +64,13 @@ public class Expendedor {
         else {
             throw new PagoInsuficienteException("El producto cuesta mas de lo que se entrego", m);
         }
-
-        return p;
     }
 
+    public Producto getProductoComprado(){
+        Producto p = productoComprado;
+        productoComprado = null;
+        return p;
+    }
     /**
      * Saca las monedas del deposito de monedas
      * @return el vuelto que se genera en la compra
