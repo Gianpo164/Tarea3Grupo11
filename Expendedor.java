@@ -4,11 +4,7 @@ package org.example;
  * Representacion de una maquina expendedora
  */
 public class Expendedor {
-    private Deposito<Producto> cocacola;
-    private Deposito<Producto> sprite;
-    private Deposito<Producto> fanta;
-    private Deposito<Producto> snickers;
-    private Deposito<Producto> super8;
+    private Deposito<Producto>[] depositos;
     private Deposito<Moneda> monVu;
     private int precioProducto;
     private Producto p;
@@ -18,19 +14,16 @@ public class Expendedor {
      * @param numProductos cuantos productos habra de cada tipo
      */
     public Expendedor(int numProductos) {
-        cocacola = new Deposito<>();
-        sprite = new Deposito<>();
-        fanta = new Deposito<>();
-        snickers = new Deposito<>();
-        super8 = new Deposito<>();
+        depositos = new Deposito[EnumProductos.values().length];
         monVu = new Deposito<>();
 
-        for (int i = 100; i < 100 + numProductos; i++) {
-            cocacola.addObject(new CocaCola(i));
-            sprite.addObject(new Sprite(i+100));
-            fanta.addObject(new Fanta(i+200));
-            snickers.addObject(new Snickers(i+300));
-            super8.addObject(new Super8(i+400));
+        for(EnumProductos producto : EnumProductos.values()){
+            depositos[producto.ordinal()] = new Deposito<>();
+            int serie = 0;
+            for (int i = 100 + serie; i < 100 + numProductos; i++) {
+                depositos[producto.ordinal()].addObject(producto.createProducto(i));
+            }
+            serie += 100;
         }
     }
 
@@ -46,18 +39,16 @@ public class Expendedor {
      */
     public Producto comprarProducto(Moneda m, EnumProductos producto) throws NoHayProductoException, PagoIncorrectoException, PagoInsuficienteException, ProductoIncorrectoException {
         p = null;
+        if (producto == null){
+            throw new ProductoIncorrectoException("No existe el producto pedido", m);
+        }
         if (m == null) {
             throw new PagoIncorrectoException("Pago incorrecto");
         }
 
-        switch (producto) {
-            case COCACOLA -> p = cocacola.getObject();
-            case SPRITE -> p = sprite.getObject();
-            case FANTA -> p = fanta.getObject();
-            case SNICKERS -> p = snickers.getObject();
-            case SUPER8 -> p = super8.getObject();
-            case null -> throw new ProductoIncorrectoException("No existe el producto pedido", m);
-        }
+        int eleccion = producto.ordinal();
+        
+        p = depositos[eleccion].getObject();
 
         if (p == null) {
             monVu.addObject(m);
