@@ -1,4 +1,4 @@
-package org.example;
+package logica;
 
 /**
  * Producto que sera expenedido
@@ -14,6 +14,12 @@ public abstract class Producto {
     public Producto(int x) {
         serie = x;
     }
+
+    /**
+     * Retorna el valor del producto
+     * @return el valor del producto
+     */
+    public abstract int getValor();
 
     /**
      * Retorna la serie del producto

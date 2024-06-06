@@ -1,4 +1,4 @@
-package org.example;
+package logica;
 
 import java.util.ArrayList;
 
@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @param <T> Tipo generico del Deposito
  */
 public class Deposito<T> {
-    private ArrayList<T> deposito;
+    protected ArrayList<T> deposito;
 
     /**
      * Crea el deposito
@@ -31,5 +31,8 @@ public class Deposito<T> {
             return null;
         }
         return deposito.remove(0);
+    }
+    public int getSizeDeposito() {
+        return deposito.size();
     }
 }

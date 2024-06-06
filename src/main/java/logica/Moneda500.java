@@ -1,6 +1,6 @@
-package org.example;
+package logica;
 
-class Moneda500 extends Moneda {
+public class Moneda500 extends Moneda {
     public Moneda500() {
         super();
     }

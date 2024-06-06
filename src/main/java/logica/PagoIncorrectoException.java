@@ -1,4 +1,4 @@
-package org.example;
+package logica;
 
 /**
  * Excepcion que maneja un mensaje de error personalizado. Sera utilizado en Expendedor
