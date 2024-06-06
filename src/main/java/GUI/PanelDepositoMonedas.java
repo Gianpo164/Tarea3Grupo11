@@ -29,8 +29,10 @@ public class PanelDepositoMonedas extends JPanel {
                     case 1000 -> expendedor.insertarMoneda(new Moneda1000());
                     case 1500 -> expendedor.insertarMoneda(new Moneda1500());
                 }
-                monedasIngresadas.repaint();
-                ingresarMoneda.repaint();
+                ingresarMoneda.animacion();
+                Timer timer = new Timer(500, actionEvent -> monedasIngresadas.repaint());
+                timer.setRepeats(false);
+                timer.start();
             }
         });
     }

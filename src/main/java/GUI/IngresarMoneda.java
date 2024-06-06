@@ -7,7 +7,7 @@ import java.awt.*;
 
 
 public class IngresarMoneda extends JPanel {
-    private JPanel monedaingresando;
+    private MonedaIngresando monedaIngresando;
     private Image moneda100 = new ImageIcon(getClass().getClassLoader().getResource("RMoneda100(1).png")).getImage();
     private Image moneda500 = new ImageIcon(getClass().getClassLoader().getResource("RMoneda500(1).png")).getImage();
     private Image moneda1000 = new ImageIcon(getClass().getClassLoader().getResource("RMoneda1000(1).png")).getImage();
@@ -18,9 +18,17 @@ public class IngresarMoneda extends JPanel {
         setBounds(16,1,53,58);
         setLayout(null);
         setOpaque(false);
-        monedaingresando = new JPanel();
-        monedaingresando.setBounds(27,13,32,32);
-        add(monedaingresando);
+        monedaIngresando = new MonedaIngresando();
+        add(monedaIngresando);
     }
 
+    public void animacion(){
+        Timer animacion = new Timer(100,monedaIngresando);
+        animacion.start();
+
+    }
+    public MonedaIngresando getMonedaIngresando(){
+        return monedaIngresando;
+
+    }
 }
