@@ -1,6 +1,6 @@
-package org.example.gui2;
+package GUI;
 
-import org.example.logica.*;
+import logica.*;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
