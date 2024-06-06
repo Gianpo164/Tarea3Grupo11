@@ -12,15 +12,15 @@ public class SelectorMonedas extends JPanel implements ActionListener{
     private JRadioButton moneda500;
     private JRadioButton moneda1000;
     private JRadioButton moneda1500;
+    private JRadioButton botonSeleccionado;
     private ImageIcon transparent;
     private ButtonGroup selector;
 
     public SelectorMonedas(){
-        setBounds(52,51,128,100);
+        setBounds(52,50,128,103);
         setOpaque(false);
         selector = new ButtonGroup();
         transparent = new ImageIcon("src/main/resources/Transparent.png");
-
         moneda100 = createRadioButton(100);
         moneda500 = createRadioButton(500);
         moneda1000 = createRadioButton(1000);
@@ -35,8 +35,8 @@ public class SelectorMonedas extends JPanel implements ActionListener{
 
     private JRadioButton createRadioButton(int value) {
         JRadioButton button = new JRadioButton();
+        button.setOpaque(false);
         button.setBorder(null);
-        button.setContentAreaFilled(false);
         button.setIcon(transparent);
         button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         selector.add(button);
@@ -44,18 +44,31 @@ public class SelectorMonedas extends JPanel implements ActionListener{
         return button;
     }
 
+
     public void actionPerformed(ActionEvent e){
-        if(e.getSource() == moneda100){
+        botonSeleccionado = (JRadioButton) e.getSource();
+        if(botonSeleccionado == moneda100){
             PanelComprador.eleccion = 100;
         }
-        else if(e.getSource() == moneda500){
+        else if(botonSeleccionado == moneda500){
             PanelComprador.eleccion = 500;
         }
-        else if(e.getSource() == moneda1000){
+        else if(botonSeleccionado == moneda1000){
             PanelComprador.eleccion = 1000;
         }
-        else if(e.getSource() == moneda1500){
+        else if(botonSeleccionado == moneda1500){
             PanelComprador.eleccion = 1500;
+        }
+        repaint();
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        if (botonSeleccionado != null && botonSeleccionado.isSelected()) {
+            Color semiTransparentBlack = new Color(0, 0, 0, 64);
+            g.setColor(semiTransparentBlack);
+            g.fillRect(botonSeleccionado.getX(), botonSeleccionado.getY(), botonSeleccionado.getWidth(), botonSeleccionado.getHeight());
         }
     }
 }
