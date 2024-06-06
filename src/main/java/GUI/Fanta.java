@@ -9,11 +9,11 @@ public class Fanta extends JPanel {
 
     private Image imgFanta;
     private Deposito deposito;
+
     public Fanta(Deposito dep){
         super();
         deposito = dep;
         imgFanta = new ImageIcon(getClass().getClassLoader().getResource("Fanta.png")).getImage();
-        Dimension size = new Dimension(imgFanta.getWidth(null), imgFanta.getHeight(null));
         setBounds(0,0,141,81);
         setBackground(new Color(0,200,0,0));
     }

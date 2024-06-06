@@ -9,9 +9,13 @@ import java.io.File;
 import java.io.IOException;
 
 public class Producto3 extends JPanel{
+    private JLabel precio;
+    private JLabel codigo;
+    private Fanta fanta;
+    Font f;
+
     public Producto3(Deposito deposito){
         super();
-        Font f = null;
 
         try {
             f = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/RetroGaming.ttf")).deriveFont(17f);
@@ -21,7 +25,7 @@ public class Producto3 extends JPanel{
             e.printStackTrace();
         }
 
-        JLabel precio = new JLabel("$"+ EnumProductos.FANTA.getPrecio(), SwingConstants.LEFT);
+        precio = new JLabel("$"+ EnumProductos.FANTA.getPrecio(), SwingConstants.LEFT);
         precio.setVisible(true);
         precio.setOpaque(true);
         precio.setBackground(new Color(9, 92, 9));
@@ -29,7 +33,7 @@ public class Producto3 extends JPanel{
         precio.setBounds(245, 23, 68, 34);
         precio.setFont(f);
 
-        JLabel codigo = new JLabel(String.valueOf(EnumProductos.FANTA.codigo), SwingConstants.CENTER);
+        codigo = new JLabel(String.valueOf(EnumProductos.FANTA.codigo), SwingConstants.CENTER);
         codigo.setVisible(true);
         codigo.setBounds(150, 20, 77, 41);
         codigo.setFont(f);

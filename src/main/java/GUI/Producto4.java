@@ -9,6 +9,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class Producto4 extends JPanel{
+
+
     public Producto4(Deposito deposito){
         super();
         Font f = null;

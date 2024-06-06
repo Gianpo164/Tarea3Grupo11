@@ -9,6 +9,10 @@ import java.io.File;
 import java.io.IOException;
 
 public class Producto5 extends JPanel{
+    private JLabel precio;
+    private JLabel codigo;
+    private Super8 super8;
+    Font f;
     public Producto5(Deposito deposito){
         super();
         Font f = null;
@@ -21,7 +25,7 @@ public class Producto5 extends JPanel{
             e.printStackTrace();
         }
 
-        JLabel precio = new JLabel("$"+ EnumProductos.SUPER8.getPrecio(), SwingConstants.LEFT);
+        precio = new JLabel("$"+ EnumProductos.SUPER8.getPrecio(), SwingConstants.LEFT);
         precio.setVisible(true);
         precio.setOpaque(true);
         precio.setBackground(new Color(9, 92, 9));
@@ -29,7 +33,7 @@ public class Producto5 extends JPanel{
         precio.setBounds(245, 23, 68, 34);
         precio.setFont(f);
 
-        JLabel codigo = new JLabel(String.valueOf(EnumProductos.SUPER8.codigo), SwingConstants.CENTER);
+        codigo = new JLabel(String.valueOf(EnumProductos.SUPER8.codigo), SwingConstants.CENTER);
         codigo.setVisible(true);
         codigo.setBounds(150, 20, 77, 41);
         codigo.setFont(f);
@@ -37,9 +41,9 @@ public class Producto5 extends JPanel{
         setLayout(null);
         setBounds(39,456,313,81);
         setBackground(new Color(0,200,0,0));
-        Super8 Super8 = new Super8(deposito);
+        super8 = new Super8(deposito);
 
-        add(Super8);
+        add(super8);
         add(precio);
         add(codigo);
     }
