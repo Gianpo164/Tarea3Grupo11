@@ -3,6 +3,7 @@ package GUI;
 import logica.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -59,6 +60,7 @@ public class PanelSelector extends JPanel {
                 }
                 codigo = "";
                 pantalla.setText(codigo);
+                PanelDepositoMonedas.getMonedasIngresadas().repaint();
 
             }
         });
