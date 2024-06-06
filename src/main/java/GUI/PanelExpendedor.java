@@ -7,8 +7,10 @@ import java.awt.*;
 
 public class PanelExpendedor extends JPanel {
     private Image imagenExpendedor;
-
-    //private Expendedor Expendedor = new Expendedor(10);
+    private RecogerBebida recogerBebida;
+    private PanelSelector panelSelector;
+    private PanelDepositoMonedas panelDepositoMonedas;
+    private PanelVueltoExpendedor panelVueltoExpendedor;
 
     public PanelExpendedor(Expendedor expendedor) {
         super();
@@ -30,13 +32,15 @@ public class PanelExpendedor extends JPanel {
         add(Producto4);
         add(Producto5);
 
-        RecogerBebida RecogerBebida = new RecogerBebida();
-        PanelSelector panelSelector = new PanelSelector(expendedor);
-        IngresarMoneda ingresarMoneda = new IngresarMoneda(expendedor);
+        recogerBebida = new RecogerBebida();
+        panelDepositoMonedas = new PanelDepositoMonedas(expendedor);
+        panelVueltoExpendedor = new PanelVueltoExpendedor(expendedor);
+        panelSelector = new PanelSelector(expendedor,panelVueltoExpendedor,panelDepositoMonedas);
 
-        add(RecogerBebida);
+        add(panelVueltoExpendedor);
+        add(recogerBebida);
         add(panelSelector);
-        add(ingresarMoneda);
+        add(panelDepositoMonedas);
 
         setOpaque(true);
     }
@@ -48,13 +52,3 @@ public class PanelExpendedor extends JPanel {
         g.drawImage(imagenExpendedor, 0, 0, null);
     }
 }
-
-//productos
-//x 46 y 38 x 284 y 122   "84" "23"
-//x 46 y 145 x 284 y 229
-//x 46 y 252 x 284 y 336
-//x 46 y 359 x 284 y 443
-//x 46 y 466 x 284 y 550
-//panel derecha
-//superior izquierda x 368 y 24
-//inferior derecha x 506 y 799
