@@ -9,6 +9,7 @@ public class Expendedor {
     private DepositoMonedas monCo;
     private Producto productoComprado;
     private EnumProductos productoPedido;
+    private int vuelto;
 
     /**
      * Crear los depositos y agregarle productos
@@ -42,7 +43,6 @@ public class Expendedor {
     public void comprarProducto(int codigoProducto) throws NoHayProductoException, PagoIncorrectoException, PagoInsuficienteException, ProductoIncorrectoException {
         productoComprado = null;
         productoPedido = null;
-        int vuelto = 0;
 
         for (EnumProductos x : EnumProductos.values()) {
             if (x.codigo == codigoProducto) {
@@ -86,7 +86,7 @@ public class Expendedor {
                 vuelto += 100;
             }
 
-            productoComprado = depositos[productoPedido.ordinal()].getObject();
+            productoComprado = depositos[productoPedido.ordinal()].getObject(0);
             monCo.getDepositoMonedas().clear();
         }
         else {
@@ -105,8 +105,12 @@ public class Expendedor {
      * Saca las monedas del deposito de monedas
      * @return el vuelto que se genera en la compra
      */
-    public Moneda getVuelto() {
-        return monVu.getObject();
+    public void getVuelto(int x) {
+        Moneda m = monVu.getObject(x);
+    }
+
+    public int getValorVuelto(){
+        return monVu.getValorTotal();
     }
 
     public void insertarMoneda(Moneda x){
@@ -116,5 +120,11 @@ public class Expendedor {
 
     public Deposito getDeposito(int x){
         return depositos[x];
+    }
+    public DepositoMonedas getMonCo(){
+        return monCo;
+    }
+    public DepositoMonedas getMonVu(){
+        return monVu;
     }
 }

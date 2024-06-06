@@ -26,11 +26,11 @@ public class Deposito<T> {
      * Retorna el primer objeto del deposito
      * @return el primer objeto del deposito
      */
-    public T getObject() {
+    public T getObject(int x) {
         if (deposito.size() == 0) {
             return null;
         }
-        return deposito.remove(0);
+        return deposito.remove(x);
     }
     public int getSizeDeposito() {
         return deposito.size();

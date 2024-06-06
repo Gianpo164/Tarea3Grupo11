@@ -21,15 +21,13 @@ public class Comprador {
     public Comprador(int cual, Expendedor exp) throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException, ProductoIncorrectoException{
         expendedor = exp;
         exp.comprarProducto(cual);
-        for (Moneda i = expendedor.getVuelto(); i != null; i = expendedor.getVuelto()) {
-            vuelto += i.getValor();
-        }
+        vuelto = exp.getValorVuelto();
     }
     /**
      * Retorna el vuelto
      * @return La suma del valor de todas las monedas que el comprador saco del Expendedor despues de hacer una compra exitosa
      */
-    public static int cuantoVuelto() {
+    public int cuantoVuelto() {
         return vuelto;
     }
 
