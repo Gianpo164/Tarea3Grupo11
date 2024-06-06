@@ -6,7 +6,7 @@ package logica;
 public class Comprador {
     private Expendedor expendedor;
     private String nproducto;
-    private int vuelto = 0;
+    private static int vuelto = 0;
 
     /**
      * Compra un producto de un expendedor con una moneda, saca las monedas del deposito para calcular el vuelto y consume el producto comprado
@@ -29,7 +29,7 @@ public class Comprador {
      * Retorna el vuelto
      * @return La suma del valor de todas las monedas que el comprador saco del Expendedor despues de hacer una compra exitosa
      */
-    public int cuantoVuelto() {
+    public static int cuantoVuelto() {
         return vuelto;
     }
 
