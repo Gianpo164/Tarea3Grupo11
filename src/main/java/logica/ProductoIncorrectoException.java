@@ -1,4 +1,4 @@
-package org.example;
+package logica;
 
 /**
  * Excepcion que maneja un mensaje de error personalizado y devuelve una modeda. Sera utilizado en Expendedor
@@ -7,16 +7,17 @@ public class ProductoIncorrectoException extends Exception{
     /**
      * Almacena la moneda devuelta
      */
-    private Moneda moneda;
+    private DepositoMonedas depositoMonedas;
+    private String monedas = "";;
 
     /**
      * Crea la excepcion para la situacion especificada
      * @param errorMessage Mensaje de error que sera entregado
      * @param m Moneda que sera devuelta
      */
-    public ProductoIncorrectoException(String errorMessage, Moneda m){
+    public ProductoIncorrectoException(String errorMessage, DepositoMonedas m){
         super(errorMessage);
-        moneda = m;
+        depositoMonedas = m;
     }
 
     /**
@@ -25,6 +26,9 @@ public class ProductoIncorrectoException extends Exception{
      */
     @Override
     public String getMessage() {
-        return super.getMessage() + ", su moneda: " + moneda.getValor();
+        for (Moneda m: depositoMonedas.getDepositoMonedas()) {
+            monedas +=" "+m.getValor();
+        }
+        return super.getMessage() + ", su moneda: " + monedas;
     }
 }

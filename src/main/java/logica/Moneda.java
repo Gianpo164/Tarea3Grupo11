@@ -1,20 +1,26 @@
-package org.example;
+package logica;
+
+import java.util.Random;
 
 /**
  * Forma de pago para el expendedor
  */
 public abstract class Moneda implements Comparable<Moneda> {
+    Random random = new Random();
+
+    private int numeroDeSerie;
     /**
      * Genera la moneda
      */
-    public Moneda() {}
-
+    public Moneda() {
+        numeroDeSerie = random.nextInt(100000,1000000);
+    }
     /**
      * Retorna la moneda
      * @return la moneda
      */
-    public Moneda getSerie() {
-        return this;
+    public int getSerie() {
+        return numeroDeSerie;
     }
 
     /**

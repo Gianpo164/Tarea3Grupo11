@@ -1,4 +1,6 @@
-package org.example;
+package logica;
+
+import java.util.Random;
 
 /**
  * Enumeracion de los productos y sus respectivos valores
@@ -7,34 +9,58 @@ public enum EnumProductos {
     /**
      * Tipo y precio de CocaCola
      */
-    COCACOLA(1,700),
+    COCACOLA(700){
+        @Override
+        public Producto createProducto(int serie){
+            return new CocaCola(serie);
+        }
+    },
     /**
      * Tipo y precio de Sprite
      */
-    SPRITE(2,500),
+    SPRITE(500){
+        @Override
+        public Producto createProducto(int serie){
+            return new Sprite(serie);
+        }
+    },
     /**
      * Tipo y precio de Fanta
      */
-    FANTA(3,600),
+    FANTA(600){
+        @Override
+        public Producto createProducto(int serie){
+            return new Fanta(serie);
+        }
+    },
     /**
      * Tipo y precio de Snickers
      */
-    SNICKERS(4,1000),
+    SNICKERS(1000){
+        @Override
+        public Producto createProducto(int serie){
+            return new Snickers(serie);
+        }
+    },
     /**
      * Tipo y precio de Super8
      */
-    SUPER8(5,500);
-
-    int x = 0;
-    int y = 0;
+    SUPER8(500){
+        @Override
+        public Producto createProducto(int serie){
+            return new Super8(serie);
+        }
+    };
+    private Random random =new Random();
+    int precio = 0;
+    public int codigo = 0;
 
     /**
-     * @param num El numero identificador de cada producto
-     * @param precio El precio de cada producto
+     * @param valor El precio de cada producto
      */
-    EnumProductos(int num, int precio) {
-        x = num;
-        y = precio;
+    EnumProductos(int valor) {
+        precio = valor;
+        codigo = random.nextInt(100,1000);
     }
 
     /**
@@ -42,6 +68,8 @@ public enum EnumProductos {
      * @return El precio del producto
      */
     public int getPrecio(){
-        return y;
+        return precio;
     }
+
+    public abstract Producto createProducto(int serie);
 }

@@ -1,4 +1,4 @@
-package org.example;
+package logica;
 
 /**
  * Representacion de un comprador el cual adquirira un producto en una maquina expendedora
@@ -18,15 +18,12 @@ public class Comprador {
      * @throws PagoIncorrectoException si no paso un moneda
      * @throws ProductoIncorrectoException si pide un producto que no existe en el expendedor
      */
-    public Comprador(Moneda m, int cual, Expendedor exp) throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException, ProductoIncorrectoException{
+    public Comprador(int cual, Expendedor exp) throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException, ProductoIncorrectoException{
         expendedor = exp;
-        Producto Producto = exp.comprarProducto(m, cual);
+        exp.comprarProducto(cual);
         for (Moneda i = expendedor.getVuelto(); i != null; i = expendedor.getVuelto()) {
             vuelto += i.getValor();
         }
-        if (Producto == null) {
-            nproducto = null;
-        } else nproducto = Producto.consumir();
     }
     /**
      * Retorna el vuelto
@@ -41,6 +38,12 @@ public class Comprador {
      * @return el nombre del producto que adquirio
      */
     public String queConsumiste() {
+        Producto p = expendedor.getProductoComprado();
+        if (p == null) {
+            nproducto = null;
+        } else nproducto = p.consumir();
         return nproducto;
     }
+
+
 }
