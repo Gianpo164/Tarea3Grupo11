@@ -8,12 +8,17 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class PanelSelector extends JPanel {
-    Pantalla pantalla;
+    private PanelDepositoMonedas panelDepositoMonedas;
+    private PanelVueltoExpendedor panelVueltoExpendedor;
+    private Pantalla pantalla;
     private Comprador comprador;
     static String codigo;
 
 
-    public PanelSelector(Expendedor expendedor){
+    public PanelSelector(Expendedor expendedor,PanelVueltoExpendedor panelVueltoExpendedor, PanelDepositoMonedas panelDepositoMonedas){
+
+        this.panelDepositoMonedas = panelDepositoMonedas;
+        this.panelVueltoExpendedor = panelVueltoExpendedor;
         setBounds(366,29,127,286);
         codigo = "";
         setOpaque(false);
@@ -48,19 +53,20 @@ public class PanelSelector extends JPanel {
             @Override
             public void mouseReleased(MouseEvent e){
                 try {
+                    if (codigo == ""){
+                        codigo = "999999";
+                    }
                     comprador = new Comprador(Integer.valueOf(codigo),expendedor);;
-                } catch (NoHayProductoException ex) {
-                    throw new RuntimeException(ex);
-                } catch (PagoIncorrectoException ex) {
-                    throw new RuntimeException(ex);
-                } catch (PagoInsuficienteException ex) {
-                    throw new RuntimeException(ex);
-                } catch (ProductoIncorrectoException ex) {
-                    throw new RuntimeException(ex);
+                } catch (PagoIncorrectoException | ProductoIncorrectoException | PagoInsuficienteException | NoHayProductoException exc) {
+                    System.out.println(exc.getMessage());
                 }
+                System.out.println(expendedor.getMonVu().getSizeDeposito());
+                System.out.println(expendedor.getValorVuelto());
+                expendedor.getProductoComprado();
                 codigo = "";
                 pantalla.setText(codigo);
-                PanelDepositoMonedas.getMonedasIngresadas().repaint();
+                panelDepositoMonedas.getMonedasIngresadas().repaint();
+                panelVueltoExpendedor.repaint();
 
             }
         });

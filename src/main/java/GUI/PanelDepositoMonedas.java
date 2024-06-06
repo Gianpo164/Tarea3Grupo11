@@ -9,7 +9,7 @@ import java.awt.event.MouseEvent;
 
 public class PanelDepositoMonedas extends JPanel {
     private IngresarMoneda ingresarMoneda;
-    private static MonedasIngresadas monedasIngresadas;
+    private MonedasIngresadas monedasIngresadas;
 
 
     public PanelDepositoMonedas(Expendedor expendedor){
@@ -37,7 +37,7 @@ public class PanelDepositoMonedas extends JPanel {
         });
     }
 
-    public static MonedasIngresadas getMonedasIngresadas() {
+    public MonedasIngresadas getMonedasIngresadas() {
         return monedasIngresadas;
     }
 }
