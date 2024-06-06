@@ -6,7 +6,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Ventana extends JFrame {
-    public Ventana(Expendedor expendedor){
+    public Ventana(){
+        Expendedor expendedor = new Expendedor(10);
+
         PanelPrincipal panelPrincipal = new PanelPrincipal(expendedor);
 
         add(panelPrincipal);
