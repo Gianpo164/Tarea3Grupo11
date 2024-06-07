@@ -53,6 +53,7 @@ public class Expendedor {
 
         if (productoPedido == null){
             monVu.getDepositoMonedas().addAll(monCo.getDepositoMonedas());
+            monCo.getDepositoMonedas().clear();
             throw new ProductoIncorrectoException("No existe el producto pedido", monVu);
         }
         if (monCo.getDepositoMonedas().isEmpty()) {
@@ -61,6 +62,7 @@ public class Expendedor {
 
         if (depositos[productoPedido.ordinal()].getSizeDeposito() == 0) {
             monVu.getDepositoMonedas().addAll(monCo.getDepositoMonedas());
+            monCo.getDepositoMonedas().clear();
             throw new NoHayProductoException("No hay producto", monVu);
         }
 
@@ -88,13 +90,13 @@ public class Expendedor {
             vuelto = 0;
 
             productoComprado = depositos[productoPedido.ordinal()].getObject(0);
+            monCo.getDepositoMonedas().clear();
         }
         else {
             monVu.getDepositoMonedas().addAll(monCo.getDepositoMonedas());
             monCo.getDepositoMonedas().clear();
             throw new PagoInsuficienteException("El producto cuesta mas de lo que se entrego", monVu);
         }
-        monCo.getDepositoMonedas().clear();
     }
 
     public Producto getProductoComprado(){
@@ -110,12 +112,20 @@ public class Expendedor {
     public Producto getProductoRetirado(){
         return productoRetirado;
     }
+
+    public String GetNombreProducto(){
+        if (productoRetirado == null){
+            return "";
+        }
+        return productoRetirado.consumir();
+    }
     /**
      * Saca las monedas del deposito de monedas
      * @return el vuelto que se genera en la compra
      */
-    public void getVuelto(int x) {
+    public int getVuelto(int x) {
         Moneda m = monVu.getObject(x);
+        return m.getValor();
     }
 
     public int getValorVuelto(){

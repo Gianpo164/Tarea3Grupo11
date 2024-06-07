@@ -13,10 +13,12 @@ public class RecogerBebida extends JPanel {
     private final Image imgFanta = new ImageIcon(getClass().getClassLoader().getResource("Fanta.png")).getImage();
     private final Image imgSnickers = new ImageIcon(getClass().getClassLoader().getResource("Snickers.png")).getImage();
     private final Image imgSuper8 = new ImageIcon(getClass().getClassLoader().getResource("Super8.png")).getImage();
+    PanelComprador panelComprador;
     Expendedor expendedor;
     Producto producto;
-    public RecogerBebida(Expendedor exp){
+    public RecogerBebida(Expendedor exp,PanelComprador pComprador){
         super();
+        panelComprador = pComprador;
         expendedor = exp;
         setOpaque(false);
         setBounds(88,612,242,63);
@@ -34,6 +36,7 @@ public class RecogerBebida extends JPanel {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         producto = expendedor.getProductoComprado();
+        System.out.println("test recoger bebida");
         if(producto == null){
 
         }else if(producto.getClass() == logica.CocaCola.class){
@@ -47,5 +50,6 @@ public class RecogerBebida extends JPanel {
         }else if(producto.getClass() == logica.Super8.class){
             g.drawImage(imgSuper8, 100, 0, null);
         }
+        panelComprador.repaint();
     }
 }

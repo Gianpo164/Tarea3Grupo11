@@ -12,7 +12,7 @@ public class PanelExpendedor extends JPanel {
     private PanelDepositoMonedas panelDepositoMonedas;
     private PanelVueltoExpendedor panelVueltoExpendedor;
 
-    public PanelExpendedor(Expendedor expendedor) {
+    public PanelExpendedor(Expendedor expendedor, PanelComprador panelComp) {
         super();
         imagenExpendedor = new ImageIcon(getClass().getClassLoader().getResource("Expendedor.png")).getImage();
         Dimension size = new Dimension(imagenExpendedor.getWidth(null), imagenExpendedor.getHeight(null));
@@ -32,10 +32,10 @@ public class PanelExpendedor extends JPanel {
         add(Producto4);
         add(Producto5);
 
-        recogerBebida = new RecogerBebida(expendedor);
+        recogerBebida = new RecogerBebida(expendedor, panelComp);
         panelDepositoMonedas = new PanelDepositoMonedas(expendedor);
         panelVueltoExpendedor = new PanelVueltoExpendedor(expendedor);
-        panelSelector = new PanelSelector(expendedor,panelVueltoExpendedor,panelDepositoMonedas);
+        panelSelector = new PanelSelector(expendedor,this);
 
         add(panelVueltoExpendedor);
         add(recogerBebida);
@@ -50,5 +50,8 @@ public class PanelExpendedor extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(imagenExpendedor, 0, 0, null);
+        panelVueltoExpendedor.repaint();
+        panelDepositoMonedas.repaint();
+        panelSelector.repaint();
     }
 }

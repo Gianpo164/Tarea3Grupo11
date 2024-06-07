@@ -37,7 +37,8 @@ public class PanelDepositoMonedas extends JPanel {
         });
     }
 
-    public MonedasIngresadas getMonedasIngresadas() {
-        return monedasIngresadas;
+    @Override
+    public void paintComponent(Graphics g){
+        monedasIngresadas.repaint();
     }
 }
