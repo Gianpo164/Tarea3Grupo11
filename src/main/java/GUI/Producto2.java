@@ -39,7 +39,7 @@ public class Producto2 extends JPanel{
 
         setLayout(null);
         setBounds(39,135,313,81);
-        setBackground(new Color(0,200,0,0));
+        setOpaque(false);
         sprite = new Sprite(deposito);
 
         add(sprite);

@@ -40,7 +40,7 @@ public class Producto3 extends JPanel{
 
         setLayout(null);
         setBounds(39,242,313,81);
-        setBackground(new Color(0,200,0,0));
+        setOpaque(false);
         fanta = new Fanta(deposito);
 
         add(fanta);

@@ -40,7 +40,7 @@ public class Producto4 extends JPanel{
 
         setLayout(null);
         setBounds(39,349,313,81);
-        setBackground(new Color(0,200,0,0));
+        setOpaque(false);
         snickers = new Snickers(deposito);
 
         add(snickers);

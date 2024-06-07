@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class RecogerBebida extends JPanel {
+public class PanelRecogerProducto extends JPanel {
     private final Image imgCocaCola = new ImageIcon(getClass().getClassLoader().getResource("CocaCola.png")).getImage();
     private final Image imgSprite = new ImageIcon(getClass().getClassLoader().getResource("Sprite.png")).getImage();
     private final Image imgFanta = new ImageIcon(getClass().getClassLoader().getResource("Fanta.png")).getImage();
@@ -16,7 +16,7 @@ public class RecogerBebida extends JPanel {
     PanelComprador panelComprador;
     Expendedor expendedor;
     Producto producto;
-    public RecogerBebida(Expendedor exp,PanelComprador pComprador){
+    public PanelRecogerProducto(Expendedor exp, PanelComprador pComprador){
         super();
         panelComprador = pComprador;
         expendedor = exp;
@@ -36,7 +36,6 @@ public class RecogerBebida extends JPanel {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         producto = expendedor.getProductoComprado();
-        System.out.println("test recoger bebida");
         if(producto == null){
 
         }else if(producto.getClass() == logica.CocaCola.class){

@@ -7,12 +7,12 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class PanelCocaCola extends JPanel {
+public class CocaCola extends JPanel {
     private Image imgCocaCola;
     private Deposito deposito;
     private int vecesRellenado;
 
-    public PanelCocaCola(Deposito dep){
+    public CocaCola(Deposito dep){
         super();
         deposito = dep;
         imgCocaCola = new ImageIcon(getClass().getClassLoader().getResource("CocaCola.png")).getImage();

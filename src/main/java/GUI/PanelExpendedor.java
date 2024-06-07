@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class PanelExpendedor extends JPanel {
     private Image imagenExpendedor;
-    private RecogerBebida recogerBebida;
+    private PanelRecogerProducto panelRecogerProducto;
     private PanelSelector panelSelector;
     private PanelDepositoMonedas panelDepositoMonedas;
     private PanelVueltoExpendedor panelVueltoExpendedor;
@@ -32,13 +32,13 @@ public class PanelExpendedor extends JPanel {
         add(Producto4);
         add(Producto5);
 
-        recogerBebida = new RecogerBebida(expendedor, panelComp);
+        panelRecogerProducto = new PanelRecogerProducto(expendedor, panelComp);
         panelDepositoMonedas = new PanelDepositoMonedas(expendedor);
         panelVueltoExpendedor = new PanelVueltoExpendedor(expendedor);
         panelSelector = new PanelSelector(expendedor,this);
 
         add(panelVueltoExpendedor);
-        add(recogerBebida);
+        add(panelRecogerProducto);
         add(panelSelector);
         add(panelDepositoMonedas);
 

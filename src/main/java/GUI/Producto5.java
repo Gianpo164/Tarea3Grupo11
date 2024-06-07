@@ -40,7 +40,7 @@ public class Producto5 extends JPanel{
 
         setLayout(null);
         setBounds(39,456,313,81);
-        setBackground(new Color(0,200,0,0));
+        setOpaque(false);
         super8 = new Super8(deposito);
 
         add(super8);

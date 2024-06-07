@@ -1,21 +1,36 @@
 package GUI;
 
 import logica.Deposito;
-import logica.Expendedor;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Super8 extends JPanel {
     private Image imgSuper8;
     private Deposito deposito;
+    private int vecesRellenado;
 
     public Super8(Deposito dep){
         super();
         deposito = dep;
         imgSuper8 = new ImageIcon(getClass().getClassLoader().getResource("Super8.png")).getImage();
         setBounds(0,0,141,81);
-        setBackground(new Color(0,200,0,0));
+        setOpaque(false);
+
+        this.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e){
+                if (deposito.getSizeDeposito() == 0) {
+                    for (int i = 110 + vecesRellenado * 10; i < 120 + vecesRellenado * 10; i++) {
+                        deposito.addObject(new logica.Super8(i));
+                    }
+                    vecesRellenado++;
+                }
+                repaint();
+            }
+        });
     }
     @Override
     public void paintComponent(Graphics g){

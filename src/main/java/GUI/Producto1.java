@@ -1,6 +1,5 @@
 package GUI;
 
-import logica.Comprador;
 import logica.Deposito;
 import logica.EnumProductos;
 
@@ -41,7 +40,7 @@ public class Producto1 extends JPanel{
 
         setLayout(null);
         setBounds(39, 28, 313, 81);
-        setBackground(new Color(0,200,0,0));
+        setOpaque(false);
         CocaCola = new CocaCola(deposito);
 
         add(CocaCola);
