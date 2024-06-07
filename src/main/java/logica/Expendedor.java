@@ -9,6 +9,7 @@ public class Expendedor {
     private DepositoMonedas monCo;
     private Producto productoComprado;
     private EnumProductos productoPedido;
+    private Producto productoRetirado;
     private int vuelto;
 
     /**
@@ -98,8 +99,16 @@ public class Expendedor {
 
     public Producto getProductoComprado(){
         Producto p = productoComprado;
-        productoComprado = null;
         return p;
+    }
+
+    public void recogerProducto(){
+        productoRetirado = productoComprado;
+        productoComprado = null;
+    }
+
+    public Producto getProductoRetirado(){
+        return productoRetirado;
     }
     /**
      * Saca las monedas del deposito de monedas

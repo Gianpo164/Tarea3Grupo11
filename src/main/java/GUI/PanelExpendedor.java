@@ -32,7 +32,7 @@ public class PanelExpendedor extends JPanel {
         add(Producto4);
         add(Producto5);
 
-        recogerBebida = new RecogerBebida();
+        recogerBebida = new RecogerBebida(expendedor);
         panelDepositoMonedas = new PanelDepositoMonedas(expendedor);
         panelVueltoExpendedor = new PanelVueltoExpendedor(expendedor);
         panelSelector = new PanelSelector(expendedor,panelVueltoExpendedor,panelDepositoMonedas);

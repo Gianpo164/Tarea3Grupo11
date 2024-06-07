@@ -27,7 +27,7 @@ public class Comprador {
      * Retorna el vuelto
      * @return La suma del valor de todas las monedas que el comprador saco del Expendedor despues de hacer una compra exitosa
      */
-    public int cuantoVuelto() {
+    public static int cuantoVuelto() {
         return vuelto;
     }
 
