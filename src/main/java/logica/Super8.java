@@ -28,6 +28,6 @@ public class Super8 extends Producto{
      */
     @Override
     public String consumir(){
-        return "super8";
+        return "Super8";
     }
 }

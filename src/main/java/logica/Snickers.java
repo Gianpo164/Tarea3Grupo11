@@ -28,6 +28,6 @@ public class Snickers extends Producto{
      */
     @Override
     public String consumir(){
-        return "snicker";
+        return "Snickers";
     }
 }

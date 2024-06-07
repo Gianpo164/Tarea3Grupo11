@@ -28,6 +28,6 @@ public class Sprite extends Producto{
      */
     @Override
     public String consumir(){
-        return "sprite";
+        return "Sprite";
     }
 }

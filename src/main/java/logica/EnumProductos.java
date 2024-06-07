@@ -9,7 +9,7 @@ public enum EnumProductos {
     /**
      * Tipo y precio de CocaCola
      */
-    COCACOLA(700){
+    COCACOLA(1400){
         @Override
         public Producto createProducto(int serie){
             return new CocaCola(serie);
@@ -18,7 +18,7 @@ public enum EnumProductos {
     /**
      * Tipo y precio de Sprite
      */
-    SPRITE(500){
+    SPRITE(1000){
         @Override
         public Producto createProducto(int serie){
             return new Sprite(serie);
@@ -27,7 +27,7 @@ public enum EnumProductos {
     /**
      * Tipo y precio de Fanta
      */
-    FANTA(600){
+    FANTA(400){
         @Override
         public Producto createProducto(int serie){
             return new Fanta(serie);
@@ -36,7 +36,7 @@ public enum EnumProductos {
     /**
      * Tipo y precio de Snickers
      */
-    SNICKERS(1000){
+    SNICKERS(1700){
         @Override
         public Producto createProducto(int serie){
             return new Snickers(serie);
@@ -45,7 +45,7 @@ public enum EnumProductos {
     /**
      * Tipo y precio de Super8
      */
-    SUPER8(500){
+    SUPER8(800){
         @Override
         public Producto createProducto(int serie){
             return new Super8(serie);

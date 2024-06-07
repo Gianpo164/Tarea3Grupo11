@@ -51,7 +51,7 @@ public class PanelVueltoExpendedor extends JPanel implements ActionListener {
         if(e.getSource() == Bmoneda100){
             for(int i = 0; i < expendedor.getMonVu().getSizeDeposito(); i++){
                 if(expendedor.getMonVu().getDepositoMonedas().get(i).getClass() == Moneda100.class){
-                    expendedor.getVuelto(i);
+                    PanelVueltoComprador.setVuelto(expendedor.getVuelto(i));
                     break;
                 }
             }
@@ -59,7 +59,7 @@ public class PanelVueltoExpendedor extends JPanel implements ActionListener {
         else if(e.getSource() == Bmoneda500){
             for(int i = 0; i < expendedor.getMonVu().getSizeDeposito(); i++){
                 if(expendedor.getMonVu().getDepositoMonedas().get(i).getClass() == Moneda500.class){
-                    expendedor.getVuelto(i);
+                    PanelVueltoComprador.setVuelto(expendedor.getVuelto(i));
                     break;
                 }
             }
@@ -67,7 +67,7 @@ public class PanelVueltoExpendedor extends JPanel implements ActionListener {
         else if(e.getSource() == Bmoneda1000){
             for(int i = 0; i < expendedor.getMonVu().getSizeDeposito(); i++){
                 if(expendedor.getMonVu().getDepositoMonedas().get(i).getClass() == Moneda1000.class){
-                    expendedor.getVuelto(i);
+                    PanelVueltoComprador.setVuelto(expendedor.getVuelto(i));
                     break;
                 }
             }
@@ -75,7 +75,7 @@ public class PanelVueltoExpendedor extends JPanel implements ActionListener {
         else if(e.getSource() == Bmoneda1500){
             for(int i = 0; i < expendedor.getMonVu().getSizeDeposito(); i++){
                 if(expendedor.getMonVu().getDepositoMonedas().get(i).getClass() == Moneda1500.class){
-                    expendedor.getVuelto(i);
+                    PanelVueltoComprador.setVuelto(expendedor.getVuelto(i));
                     break;
                 }
             }

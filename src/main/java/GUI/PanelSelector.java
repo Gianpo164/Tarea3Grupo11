@@ -8,17 +8,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class PanelSelector extends JPanel {
-    private PanelDepositoMonedas panelDepositoMonedas;
-    private PanelVueltoExpendedor panelVueltoExpendedor;
     private Pantalla pantalla;
     private Comprador comprador;
     static String codigo;
 
 
-    public PanelSelector(Expendedor expendedor,PanelVueltoExpendedor panelVueltoExpendedor, PanelDepositoMonedas panelDepositoMonedas){
+    public PanelSelector(Expendedor expendedor,PanelExpendedor panelExpendededor){
 
-        this.panelDepositoMonedas = panelDepositoMonedas;
-        this.panelVueltoExpendedor = panelVueltoExpendedor;
         setBounds(366,29,127,286);
         codigo = "";
         setOpaque(false);
@@ -65,9 +61,7 @@ public class PanelSelector extends JPanel {
                 expendedor.getProductoComprado();
                 codigo = "";
                 pantalla.setText(codigo);
-                panelDepositoMonedas.getMonedasIngresadas().repaint();
-                panelVueltoExpendedor.repaint();
-
+                panelExpendededor.repaint();
             }
         });
     }

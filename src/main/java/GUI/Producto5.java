@@ -15,7 +15,7 @@ public class Producto5 extends JPanel{
     Font f;
     public Producto5(Deposito deposito){
         super();
-        Font f = null;
+        f = null;
 
         try {
             f = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/RetroGaming.ttf")).deriveFont(17f);

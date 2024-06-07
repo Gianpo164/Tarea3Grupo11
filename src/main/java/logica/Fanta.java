@@ -28,6 +28,6 @@ public class Fanta extends Producto{
      */
     @Override
     public String consumir(){
-        return "fanta";
+        return "Fanta";
     }
 }

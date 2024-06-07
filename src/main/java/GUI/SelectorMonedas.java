@@ -65,6 +65,7 @@ public class SelectorMonedas extends JPanel implements ActionListener{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        System.out.println("Selector Monedas");
         if (botonSeleccionado != null && botonSeleccionado.isSelected()) {
             Color semiTransparentBlack = new Color(0, 0, 0, 64);
             g.setColor(semiTransparentBlack);
