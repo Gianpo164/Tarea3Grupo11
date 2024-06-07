@@ -5,12 +5,22 @@ import logica.Expendedor;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Panel que incluye todos los aspectos relacionados a comprar productos
+ */
 public class PanelExpendedor extends JPanel {
     private Image imagenExpendedor;
+    private PanelRecogerProducto panelRecogerProducto;
+    private PanelSelector panelSelector;
+    private PanelDepositoMonedas panelDepositoMonedas;
+    private PanelVueltoExpendedor panelVueltoExpendedor;
 
-    //private Expendedor Expendedor = new Expendedor(10);
-
-    public PanelExpendedor(Expendedor expendedor) {
+    /**
+     * Crea el panel y agrega sus componentes
+     * @param expendedor clase logica que representa un expendedor
+     * @param panelComp panel que relaciona los componentes del comprador
+     */
+    public PanelExpendedor(Expendedor expendedor, PanelComprador panelComp) {
         super();
         imagenExpendedor = new ImageIcon(getClass().getClassLoader().getResource("Expendedor.png")).getImage();
         Dimension size = new Dimension(imagenExpendedor.getWidth(null), imagenExpendedor.getHeight(null));
@@ -30,31 +40,30 @@ public class PanelExpendedor extends JPanel {
         add(Producto4);
         add(Producto5);
 
-        RecogerBebida RecogerBebida = new RecogerBebida();
-        PanelSelector panelSelector = new PanelSelector(expendedor);
-        IngresarMoneda ingresarMoneda = new IngresarMoneda(expendedor);
+        panelRecogerProducto = new PanelRecogerProducto(expendedor, panelComp);
+        panelDepositoMonedas = new PanelDepositoMonedas(expendedor);
+        panelVueltoExpendedor = new PanelVueltoExpendedor(expendedor);
+        panelSelector = new PanelSelector(expendedor,this);
 
-        add(RecogerBebida);
+        add(panelVueltoExpendedor);
+        add(panelRecogerProducto);
         add(panelSelector);
-        add(ingresarMoneda);
+        add(panelDepositoMonedas);
 
         setOpaque(true);
     }
 
 
+    /**
+     * Metodo que dibuja los componentes del panel
+     * @param g the <code>Graphics</code> object to protect
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(imagenExpendedor, 0, 0, null);
+        panelVueltoExpendedor.repaint();
+        panelDepositoMonedas.repaint();
+        panelSelector.repaint();
     }
 }
-
-//productos
-//x 46 y 38 x 284 y 122   "84" "23"
-//x 46 y 145 x 284 y 229
-//x 46 y 252 x 284 y 336
-//x 46 y 359 x 284 y 443
-//x 46 y 466 x 284 y 550
-//panel derecha
-//superior izquierda x 368 y 24
-//inferior derecha x 506 y 799

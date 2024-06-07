@@ -9,6 +9,9 @@ public class Expendedor {
     private DepositoMonedas monCo;
     private Producto productoComprado;
     private EnumProductos productoPedido;
+    private Producto productoDeposito;
+    private Producto productoRetirado = new CocaCola(0);
+    private int vuelto;
 
     /**
      * Crear los depositos y agregarle productos
@@ -19,10 +22,10 @@ public class Expendedor {
         monVu = new DepositoMonedas();
         monCo = new DepositoMonedas();
 
+        int serie = 0;
         for(EnumProductos producto : EnumProductos.values()){
             depositos[producto.ordinal()] = new Deposito<>();
-            int serie = 0;
-            for (int i = 100 + serie; i < 100 + numProductos; i++) {
+            for (int i = 100 + serie; i < 100 + serie + numProductos; i++) {
                 depositos[producto.ordinal()].addObject(producto.createProducto(i));
             }
             serie += 100;
@@ -31,9 +34,7 @@ public class Expendedor {
 
     /**
      * Se asegura de que el producto y el vuelto sean el correcto
-     * @param m para corroborar que se ingreso el dinero suficiente para efectuar la compra
-     * @param producto para seleccionar el producto a comprar
-     * @return el producto pedido
+     * @param codigoProducto para seleccionar el producto a comprar
      * @throws NoHayProductoException si no quedan productos del que se pide
      * @throws PagoIncorrectoException si no se ingresa una moneda
      * @throws PagoInsuficienteException si con la moneda ingresada no alcanza a comprar el producto
@@ -42,7 +43,6 @@ public class Expendedor {
     public void comprarProducto(int codigoProducto) throws NoHayProductoException, PagoIncorrectoException, PagoInsuficienteException, ProductoIncorrectoException {
         productoComprado = null;
         productoPedido = null;
-        int vuelto = 0;
 
         for (EnumProductos x : EnumProductos.values()) {
             if (x.codigo == codigoProducto) {
@@ -85,8 +85,9 @@ public class Expendedor {
                 monVu.addObject(new Moneda100());
                 vuelto += 100;
             }
+            vuelto = 0;
 
-            productoComprado = depositos[productoPedido.ordinal()].getObject();
+            productoComprado = depositos[productoPedido.ordinal()].getObject(0);
             monCo.getDepositoMonedas().clear();
         }
         else {
@@ -96,25 +97,93 @@ public class Expendedor {
         }
     }
 
-    public Producto getProductoComprado(){
-        Producto p = productoComprado;
-        productoComprado = null;
-        return p;
+    /**
+     * Remplaza el producto del productoDeposito por el del productoComprado
+     */
+    public void productoComprado(){
+        if (productoComprado != null) {
+            productoDeposito = productoComprado;
+            productoComprado = null;
+        }
+    }
+
+    /**
+     * Remplaza el producto del productoRetirado por el del productoDeposito
+     */
+    public void recogerProducto(){
+        if (productoDeposito != null) {
+            productoRetirado = productoDeposito;
+            productoDeposito = null;
+        }
+    }
+
+    /**
+     * Retorna el producto del productoDeposito
+     * @return El producto del productoDeposito
+     */
+    public Producto getProductoDeposito() {
+        return productoDeposito;
+    }
+
+    /**
+     * Retorna el producto del productoRetirado
+     * @return El producto del productoRetirado
+     */
+    public Producto getProductoRetirado(){
+        return productoRetirado;
+    }
+
+    /**
+     * Retorna el nombre del producto que el usuario retiro
+     * @return El nombre del producto que el usuario retiro
+     */
+    public String getNombreProducto(){
+        if (productoRetirado == null){
+            return "";
+        }
+        return productoRetirado.consumir();
     }
     /**
-     * Saca las monedas del deposito de monedas
-     * @return el vuelto que se genera en la compra
+     * Retorna el valor de la moneda en el indice x del depositoDeMonedas
+     * @param x Almacina el indice
+     * @return El valor de la moneda en el indice x del depositoDeMonedas
      */
-    public Moneda getVuelto() {
-        return monVu.getObject();
+    public int getVuelto(int x) {
+        Moneda m = monVu.getObject(x);
+        return m.getValor();
     }
 
-    public void insertarMoneda(Moneda x){
-        monCo.addObject(x);
-        System.out.println(x.getValor());
+    /**
+     * Ingresa una Moneda al deposito que almacena las monedas para comprar productos
+     * @param moneda Moneda ingresada
+     */
+    public void insertarMoneda(Moneda moneda){
+        monCo.addObject(moneda);
+        System.out.println("Serie moneda insertada: " + moneda.getSerie());
     }
 
+    /**
+     * Retorna el deposito con el indice pedido
+     * @param x indice
+     * @return El deposito con el indice pedido
+     */
     public Deposito getDeposito(int x){
         return depositos[x];
+    }
+
+    /**
+     * Retorna el deposito que almacena las monedas para comprar productos
+     * @return El deposito que almacena las monedas para comprar productos
+     */
+    public DepositoMonedas getMonCo(){
+        return monCo;
+    }
+
+    /**
+     * Retorna el deposito que almacena las monedas de vuelto
+     * @return El deposito que almacena las monedas de vuelto
+     */
+    public DepositoMonedas getMonVu(){
+        return monVu;
     }
 }

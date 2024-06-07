@@ -6,8 +6,8 @@ package logica;
 public class Fanta extends Producto{
 
     /**
-     * Crea una Fanta
-     * @param x Serie
+     * Crea una Fanta con la serie ingresada
+     * @param serie Serie
      */
     public Fanta(int serie){
         super(serie);
@@ -23,11 +23,11 @@ public class Fanta extends Producto{
     }
 
     /**
-     * Retorna el nombre del producto consumido
-     * @return El nombre del producto consumido
+     * Retorna el nombre del producto
+     * @return El nombre del producto
      */
     @Override
     public String consumir(){
-        return "fanta";
+        return "Fanta";
     }
 }

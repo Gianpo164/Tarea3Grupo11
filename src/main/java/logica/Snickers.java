@@ -7,10 +7,10 @@ public class Snickers extends Producto{
 
     /**
      * Crea un Snickers
-     * @param x Serie
+     * @param serie Serie
      */
-    public Snickers(int x) {
-        super(x);
+    public Snickers(int serie) {
+        super(serie);
     }
 
     /**
@@ -23,11 +23,11 @@ public class Snickers extends Producto{
     }
 
     /**
-     * Retorna el nombre del producto consumido
-     * @return El nombre del producto consumido
+     * Retorna el nombre del producto
+     * @return El nombre del producto
      */
     @Override
     public String consumir(){
-        return "snicker";
+        return "Snickers";
     }
 }

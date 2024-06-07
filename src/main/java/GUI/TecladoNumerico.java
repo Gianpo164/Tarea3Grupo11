@@ -5,12 +5,18 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Panel que genera los botones y elementos necesarios para el funcionamiento del teclado numerico
+ */
 public class TecladoNumerico extends JPanel {
-    JButton Comprar;
-    JButton CancelarCompra;
+    JButton comprar;
+    JButton cancelarCompra;
     JButton[] numeros;
     Font fuente;
 
+    /**
+     * Genera el teclado numerico con los botones utilizados para interactuar con el expendedor
+     */
     public TecladoNumerico() {
         setBounds(5, 116, 115, 159);
         setOpaque(false);
@@ -21,35 +27,36 @@ public class TecladoNumerico extends JPanel {
         } catch (FontFormatException e) {
             e.printStackTrace();
         }
+
         numeros = new JButton[10];
-        Comprar = new JButton();
-        Comprar.setFocusable(false);
-        Comprar.setBorder(null);
-        Comprar.setOpaque(false);
-        Comprar.setContentAreaFilled(false);
-        Comprar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        CancelarCompra = new JButton();
-        CancelarCompra.setFocusable(false);
-        CancelarCompra.setBorder(null);
-        CancelarCompra.setOpaque(false);
-        CancelarCompra.setContentAreaFilled(false);
-        CancelarCompra.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        cancelarCompra = new JButton();
+        comprar = new JButton();
+
+        ConfigurarButtons(comprar);
+        ConfigurarButtons(cancelarCompra);
         for (int i = 0; i < 10; i++) {
             numeros[i] = new JButton(String.valueOf(i));
             numeros[i].setFont(fuente);
-            numeros[i].setFocusable(false);
-            numeros[i].setBorder(null);
-            numeros[i].setOpaque(false);
-            numeros[i].setContentAreaFilled(false);
-            numeros[i].setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            ConfigurarButtons(numeros[i]);
         }
 
         setLayout(new GridLayout(4, 3, 10, 18));
         for (int i = 1; i < 10; i++) {
             add(numeros[i]);
         }
-        add(CancelarCompra);
+        add(cancelarCompra);
         add(numeros[0]);
-        add(Comprar);
+        add(comprar);
+    }
+
+    /**
+     * Modifica los componentes de los botones necesarios para su funcionamiento
+     * @param button Boton utilizado en el teclado
+     */
+    private void ConfigurarButtons(JButton button){
+        button.setFocusable(false);
+        button.setBorder(null);
+        button.setContentAreaFilled(false);
+        button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
 }

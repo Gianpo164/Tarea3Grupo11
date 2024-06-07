@@ -10,14 +10,14 @@ public abstract class Moneda implements Comparable<Moneda> {
 
     private int numeroDeSerie;
     /**
-     * Genera la moneda
+     * Genera una moneda y un numero de serie aleatorio
      */
     public Moneda() {
         numeroDeSerie = random.nextInt(100000,1000000);
     }
     /**
-     * Retorna la moneda
-     * @return la moneda
+     * Retorna la serie de la moneda
+     * @return la serie de la moneda
      */
     public int getSerie() {
         return numeroDeSerie;
@@ -25,7 +25,7 @@ public abstract class Moneda implements Comparable<Moneda> {
 
     /**
      * Retorna el valor de la moneda
-     * @return valor de la moneda
+     * @return El valor de la moneda
      */
     public abstract int getValor();
 

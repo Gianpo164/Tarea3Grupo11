@@ -7,45 +7,45 @@ import java.util.Random;
  */
 public enum EnumProductos {
     /**
-     * Tipo y precio de CocaCola
+     * Precio de CocaCola
      */
-    COCACOLA(700){
+    COCACOLA(1400){
         @Override
         public Producto createProducto(int serie){
             return new CocaCola(serie);
         }
     },
     /**
-     * Tipo y precio de Sprite
+     * Precio de Sprite
      */
-    SPRITE(500){
+    SPRITE(1000){
         @Override
         public Producto createProducto(int serie){
             return new Sprite(serie);
         }
     },
     /**
-     * Tipo y precio de Fanta
+     * Precio de Fanta
      */
-    FANTA(600){
+    FANTA(400){
         @Override
         public Producto createProducto(int serie){
             return new Fanta(serie);
         }
     },
     /**
-     * Tipo y precio de Snickers
+     * Precio de Snickers
      */
-    SNICKERS(1000){
+    SNICKERS(1700){
         @Override
         public Producto createProducto(int serie){
             return new Snickers(serie);
         }
     },
     /**
-     * Tipo y precio de Super8
+     * Precio de Super8
      */
-    SUPER8(500){
+    SUPER8(800){
         @Override
         public Producto createProducto(int serie){
             return new Super8(serie);
@@ -71,5 +71,10 @@ public enum EnumProductos {
         return precio;
     }
 
+    /**
+     * Retorna producto generado con la serie entregada
+     * @param serie del producto a crear
+     * @return Producto generado con la serie entregada
+     */
     public abstract Producto createProducto(int serie);
 }

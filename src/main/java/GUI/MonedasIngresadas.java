@@ -5,6 +5,9 @@ import logica.*;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Panel que maneja las monedas usadas para comprar un producto
+ */
 public class MonedasIngresadas extends JPanel {
     private final Image moneda100 = new ImageIcon(getClass().getClassLoader().getResource("RMoneda100(1).png")).getImage();
     private final Image moneda500 = new ImageIcon(getClass().getClassLoader().getResource("RMoneda500(1).png")).getImage();
@@ -12,12 +15,21 @@ public class MonedasIngresadas extends JPanel {
     private final Image moneda1500 = new ImageIcon(getClass().getClassLoader().getResource("RMoneda1500(1).png")).getImage();
     Expendedor expendedor;
 
+    /**
+     * Crea el panel y asigna sus caracteristicas
+     * @param expendedor clase logica que representa un expendedor
+     */
     public MonedasIngresadas(Expendedor expendedor){
         setBounds(3,82,111,16);
         setOpaque(false);
         this.expendedor = expendedor;
 
     }
+
+    /**
+     * Metodo que dibuja las monedas usadas en el expendedeor
+     * @param g the <code>Graphics</code> object to protect
+     */
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);

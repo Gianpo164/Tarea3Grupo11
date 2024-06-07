@@ -7,7 +7,7 @@ public class CocaCola extends Producto{
 
     /**
      * Crea una CocaCola
-     * @param x Serie
+     * @param serie Serie del producto
      */
     public CocaCola(int serie){
         super(serie);
@@ -15,7 +15,7 @@ public class CocaCola extends Producto{
 
     /**
      * Retorna el valor del producto
-     * @return el valor del producto
+     * @return El valor del producto
      */
     @Override
     public int getValor() {
@@ -23,11 +23,11 @@ public class CocaCola extends Producto{
     }
 
     /**
-     * Retorna el nombre del producto consumido
-     * @return El nombre del producto consumido
+     * Retorna el nombre del producto
+     * @return El nombre del producto
      */
     @Override
     public String consumir(){
-        return "cocacola";
+        return "CocaCola";
     }
 }

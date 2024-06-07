@@ -23,11 +23,11 @@ public class Super8 extends Producto{
     }
 
     /**
-     * Retorna el nombre del producto consumido
-     * @return El nombre del producto consumido
+     * Retorna el nombre del producto
+     * @return El nombre del producto
      */
     @Override
     public String consumir(){
-        return "super8";
+        return "Super8";
     }
 }

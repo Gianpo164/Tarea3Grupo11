@@ -5,8 +5,15 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Clase que permite visualizar informacion en una pantalla
+ */
 public class Pantalla extends JTextField {
     Font fuente;
+
+    /**
+     * Genera la pantalla y especifica sus caracteristicas
+     */
     public Pantalla(){
         try {
             fuente = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/RetroGaming.ttf")).deriveFont(35f);
