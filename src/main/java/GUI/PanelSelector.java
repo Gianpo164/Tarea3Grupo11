@@ -56,7 +56,7 @@ public class PanelSelector extends JPanel {
                 } catch (PagoIncorrectoException | ProductoIncorrectoException | PagoInsuficienteException | NoHayProductoException exc) {
                     JOptionPane.showMessageDialog(null, exc.getMessage() , "Error de pago", JOptionPane.ERROR_MESSAGE);
                 }
-                expendedor.getProductoComprado();
+                expendedor.productoComprado();
                 codigo = "";
                 pantallaCodigo.setText(codigo);
                 panelExpendededor.repaint();

@@ -35,7 +35,7 @@ public class PanelRecogerProducto extends JPanel {
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        producto = expendedor.getProductoComprado();
+        producto = expendedor.getProductoDeposito();
         if(producto == null){
 
         }else if(producto.getClass() == logica.CocaCola.class){
