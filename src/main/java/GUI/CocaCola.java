@@ -37,7 +37,6 @@ public class CocaCola extends JPanel {
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        System.out.println("CocaCola");
         for(int i = 0; i < deposito.getSizeDeposito() && i < 10; i++){//<10 cambiar
             g.drawImage(imgCocaCola, i*12, 10, null);
         }

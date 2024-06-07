@@ -8,7 +8,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class PanelSelector extends JPanel {
-    private Pantalla pantalla;
+    private Pantalla pantallaCodigo;
     private Comprador comprador;
     static String codigo;
 
@@ -20,17 +20,17 @@ public class PanelSelector extends JPanel {
         setOpaque(false);
         setLayout(null);
 
-        pantalla = new Pantalla();
+        pantallaCodigo = new Pantalla();
         TecladoNumerico teclado = new TecladoNumerico();
         add(teclado);
-        add(pantalla);
+        add(pantallaCodigo);
 
 
         teclado.cancelarCompra.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e){
                 codigo = "";
-                pantalla.setText(codigo);
+                pantallaCodigo.setText(codigo);
             }
         });
         for (int i = 0; i < 10; i++) {
@@ -40,7 +40,7 @@ public class PanelSelector extends JPanel {
                 public void mouseReleased(MouseEvent e) {
                     if (codigo.length() < 3) {
                         codigo += numero;
-                        pantalla.setText(codigo);
+                        pantallaCodigo.setText(codigo);
                     }
                 }
             });
@@ -54,13 +54,11 @@ public class PanelSelector extends JPanel {
                     }
                     comprador = new Comprador(Integer.valueOf(codigo),expendedor);;
                 } catch (PagoIncorrectoException | ProductoIncorrectoException | PagoInsuficienteException | NoHayProductoException exc) {
-                    System.out.println(exc.getMessage());
+                    JOptionPane.showMessageDialog(null, exc.getMessage() , "Error de pago", JOptionPane.ERROR_MESSAGE);
                 }
-                System.out.println(expendedor.getMonVu().getSizeDeposito());
-                System.out.println(expendedor.getValorVuelto());
                 expendedor.getProductoComprado();
                 codigo = "";
-                pantalla.setText(codigo);
+                pantallaCodigo.setText(codigo);
                 panelExpendededor.repaint();
             }
         });

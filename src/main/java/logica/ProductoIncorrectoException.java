@@ -29,6 +29,6 @@ public class ProductoIncorrectoException extends Exception{
         for (Moneda m: depositoMonedas.getDepositoMonedas()) {
             monedas +=" "+m.getValor();
         }
-        return super.getMessage() + ", su moneda: " + monedas;
+        return super.getMessage() + ", sus monedas:" + monedas;
     }
 }

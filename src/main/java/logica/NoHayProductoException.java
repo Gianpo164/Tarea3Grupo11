@@ -29,6 +29,6 @@ public class NoHayProductoException extends Exception{
         for (Moneda m: depositoMonedas.getDepositoMonedas()) {
             monedas +=" "+m.getValor();
         }
-        return super.getMessage() + ", su monedas:" + monedas;
+        return super.getMessage() + ", sus monedas:" + monedas;
     }
 }

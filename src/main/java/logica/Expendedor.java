@@ -67,7 +67,6 @@ public class Expendedor {
         }
 
         if (monCo.getValorTotal() >= productoPedido.precio){
-            System.out.println("test");
             while (monCo.getValorTotal() - productoPedido.precio - vuelto >= 1500) {
                 monVu.addObject(new Moneda1500());
                 vuelto += 1500;
@@ -136,7 +135,7 @@ public class Expendedor {
 
     public void insertarMoneda(Moneda x){
         monCo.addObject(x);
-        System.out.println("Serie: " + x.getSerie());
+        System.out.println("Serie moneda insertada: " + x.getSerie());
     }
 
     public Deposito getDeposito(int x){
