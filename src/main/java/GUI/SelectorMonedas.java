@@ -7,6 +7,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * Panel que implementa la eleccion de monedas para comprar
+ */
 public class SelectorMonedas extends JPanel implements ActionListener{
     private JRadioButton moneda100;
     private JRadioButton moneda500;
@@ -16,6 +19,9 @@ public class SelectorMonedas extends JPanel implements ActionListener{
     private ImageIcon transparent;
     private ButtonGroup selector;
 
+    /**
+     * Crea el panel y agrega los componentes necesarios para su funcionamiento
+     */
     public SelectorMonedas(){
         setBounds(52,50,128,103);
         setOpaque(false);
@@ -33,6 +39,11 @@ public class SelectorMonedas extends JPanel implements ActionListener{
         add(moneda1500);
     }
 
+    /**
+     * Crea un boton con caracteristicas personalizadas
+     * @param value valor de la moneda
+     * @return boton personalizado
+     */
     private JRadioButton createRadioButton(int value) {
         JRadioButton button = new JRadioButton();
         button.setOpaque(false);
@@ -45,6 +56,10 @@ public class SelectorMonedas extends JPanel implements ActionListener{
     }
 
 
+    /**
+     * Comprueba que moneda fue elegida
+     * @param e the event to be processed
+     */
     public void actionPerformed(ActionEvent e){
         botonSeleccionado = (JRadioButton) e.getSource();
         if(botonSeleccionado == moneda100){
@@ -62,6 +77,10 @@ public class SelectorMonedas extends JPanel implements ActionListener{
         repaint();
     }
 
+    /**
+     * Metodo que dibuja el tipo de moneda seleccionada
+     * @param g the <code>Graphics</code> object to protect
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

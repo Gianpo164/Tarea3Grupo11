@@ -3,9 +3,14 @@ package GUI;
 import logica.*;
 
 import javax.swing.*;
-import java.awt.*;
 
+/**
+ * Marco inicial del programa
+ */
 public class Ventana extends JFrame {
+    /**
+     * Crea la ventana que será la base del programa
+     */
     public Ventana(){
         Expendedor expendedor = new Expendedor(10);
 

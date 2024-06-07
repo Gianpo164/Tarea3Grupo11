@@ -7,15 +7,24 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * Panel que maneja la recoleccion de productos del expendedor
+ */
 public class PanelRecogerProducto extends JPanel {
     private final Image imgCocaCola = new ImageIcon(getClass().getClassLoader().getResource("CocaCola.png")).getImage();
     private final Image imgSprite = new ImageIcon(getClass().getClassLoader().getResource("Sprite.png")).getImage();
     private final Image imgFanta = new ImageIcon(getClass().getClassLoader().getResource("Fanta.png")).getImage();
     private final Image imgSnickers = new ImageIcon(getClass().getClassLoader().getResource("Snickers.png")).getImage();
     private final Image imgSuper8 = new ImageIcon(getClass().getClassLoader().getResource("Super8.png")).getImage();
-    PanelComprador panelComprador;
-    Expendedor expendedor;
-    Producto producto;
+    private PanelComprador panelComprador;
+    private Expendedor expendedor;
+    private Producto producto;
+
+    /**
+     * Crea el panel y agrega sus componentes
+     * @param exp clase logica que representa un expendedor
+     * @param pComprador panel que relacionan los componentes del comprador
+     */
     public PanelRecogerProducto(Expendedor exp, PanelComprador pComprador){
         super();
         panelComprador = pComprador;
@@ -32,6 +41,11 @@ public class PanelRecogerProducto extends JPanel {
         });
 
     }
+
+    /**
+     * Metodo que dibuja los componentes del panel
+     * @param g the <code>Graphics</code> object to protect
+     */
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);

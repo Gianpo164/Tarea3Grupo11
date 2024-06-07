@@ -5,12 +5,18 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Panel que genera los botones y elementos necesarios para el funcionamiento del teclado numerico
+ */
 public class TecladoNumerico extends JPanel {
     JButton comprar;
     JButton cancelarCompra;
     JButton[] numeros;
     Font fuente;
 
+    /**
+     * Genera el teclado numerico con los botones utilizados para interactuar con el expendedor
+     */
     public TecladoNumerico() {
         setBounds(5, 116, 115, 159);
         setOpaque(false);
@@ -43,6 +49,10 @@ public class TecladoNumerico extends JPanel {
         add(comprar);
     }
 
+    /**
+     * Modifica los componentes de los botones necesarios para su funcionamiento
+     * @param button Boton utilizado en el teclado
+     */
     private void ConfigurarButtons(JButton button){
         button.setFocusable(false);
         button.setBorder(null);

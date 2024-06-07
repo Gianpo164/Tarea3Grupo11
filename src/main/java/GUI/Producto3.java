@@ -8,12 +8,19 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Panel que contiene los componentes relacionados con el producto Fanta
+ */
 public class Producto3 extends JPanel{
     private JLabel precio;
     private JLabel codigo;
     private Fanta fanta;
     Font f;
 
+    /**
+     * Genera el panel que contiene los componentes necesarios para dibujar los productos Fanta
+     * @param deposito contiene los productos Fanta
+     */
     public Producto3(Deposito deposito){
         super();
 

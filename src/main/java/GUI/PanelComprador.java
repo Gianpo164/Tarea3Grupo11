@@ -8,6 +8,9 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Panel que contiene todos los aspectos relacionados a un comprador
+ */
 public class PanelComprador extends JPanel {
     private Image imagenComprador;
     private Font font;
@@ -23,6 +26,11 @@ public class PanelComprador extends JPanel {
     private Expendedor expendedor;
     private logica.Producto producto;
     public static int eleccion;
+
+    /**
+     * Crea el panel y agrega sus componentes
+     * @param exp clase logica que representa un expendedor
+     */
     public PanelComprador(Expendedor exp){
         expendedor = exp;
         imagenComprador = new ImageIcon(getClass().getClassLoader().getResource("Comprador.png")).getImage();
@@ -49,7 +57,7 @@ public class PanelComprador extends JPanel {
 
         serieProductoComprado = new JLabel("", SwingConstants.CENTER);
         serieProductoComprado.setVisible(true);
-        serieProductoComprado.setBounds(45, 238, 80, 35);
+        serieProductoComprado.setBounds(42, 238, 95, 25);
         serieProductoComprado.setFont(font);
         serieProductoComprado.setForeground(Color.black);
 
@@ -58,6 +66,11 @@ public class PanelComprador extends JPanel {
         add(selecmon);
         add(panelVueltoComprador);
     }
+
+    /**
+     * Metodo que dibuja los componentes del panel
+     * @param g the <code>Graphics</code> object to protect
+     */
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(imagenComprador, 0, 0, null);
@@ -65,7 +78,7 @@ public class PanelComprador extends JPanel {
         producto = expendedor.getProductoRetirado();
 
         if (expendedor.getProductoRetirado().getSerie() != 0) {
-            nombreProductoComprado.setText(expendedor.GetNombreProducto());
+            nombreProductoComprado.setText(expendedor.getNombreProducto());
             serieProductoComprado.setText("Serie: " + String.valueOf(expendedor.getProductoRetirado().getSerie()));
         }
 

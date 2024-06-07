@@ -7,11 +7,18 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * Panel que se encarga de dibujar las images de Super8 y rellenar el Deposito de Super8
+ */
 public class Super8 extends JPanel {
     private Image imgSuper8;
     private Deposito deposito;
     private int vecesRellenado;
 
+    /**
+     * Genera las imagenes de Super8 y rellena el deposito cuando es necesario
+     * @param dep Deposito de Super8
+     */
     public Super8(Deposito dep){
         super();
         deposito = dep;
@@ -32,6 +39,11 @@ public class Super8 extends JPanel {
             }
         });
     }
+
+    /**
+     * Dibuja los productos Super8
+     * @param g the <code>Graphics</code> object to protect
+     */
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);

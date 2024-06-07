@@ -7,12 +7,19 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * Panel que se encarga de dibujar las images de Fanta y rellenar el Deposito de Fanta
+ */
 public class Fanta extends JPanel {
 
     private Image imgFanta;
     private Deposito deposito;
     private int vecesRellenado;
 
+    /**
+     * Genera las imagenes de Fanta y rellena el deposito cuando es necesario
+     * @param dep Deposito de Fanta
+     */
     public Fanta(Deposito dep){
         super();
         deposito = dep;
@@ -33,6 +40,11 @@ public class Fanta extends JPanel {
             }
         });
     }
+
+    /**
+     * Dibuja los productos Fanta
+     * @param g the <code>Graphics</code> object to protect
+     */
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);

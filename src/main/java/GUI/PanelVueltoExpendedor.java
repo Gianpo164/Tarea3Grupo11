@@ -7,6 +7,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Panel que maneja el vuelto de cada compra
+ */
 public class PanelVueltoExpendedor extends JPanel implements ActionListener {
     private Expendedor expendedor;
     private JButton Bmoneda100;
@@ -18,6 +21,10 @@ public class PanelVueltoExpendedor extends JPanel implements ActionListener {
     private Image moneda1000 = new ImageIcon(getClass().getClassLoader().getResource("Moneda1000.png")).getImage();
     private Image moneda1500 = new ImageIcon(getClass().getClassLoader().getResource("Moneda1500.png")).getImage();
 
+    /**
+     * Crea el panel y agrega sus componentes
+     * @param expendedor clase logica que representa un expendedor
+     */
     public PanelVueltoExpendedor(Expendedor expendedor){
         setBounds(379,524,100,61);
 
@@ -40,6 +47,10 @@ public class PanelVueltoExpendedor extends JPanel implements ActionListener {
         add(Bmoneda1500);
     }
 
+    /**
+     * Modifica las caracteristicas necesarias para visualizar el boton
+     * @param button boton a modificar
+     */
     private void ConfigurarButtons(JButton button){
         button.setFocusable(false);
         button.setContentAreaFilled(false);
@@ -47,6 +58,10 @@ public class PanelVueltoExpendedor extends JPanel implements ActionListener {
         button.setBorder(null);
     }
 
+    /**
+     * Recoge las monedas del deposito de vuelto
+     * @param e the event to be processed
+     */
     public void actionPerformed(ActionEvent e){
         if(e.getSource() == Bmoneda100){
             for(int i = 0; i < expendedor.getMonVu().getSizeDeposito(); i++){
@@ -84,6 +99,10 @@ public class PanelVueltoExpendedor extends JPanel implements ActionListener {
     }
 
 
+    /**
+     * Metodo que dibuja los monedas de vuelto
+     * @param g the <code>Graphics</code> object to protect
+     */
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);

@@ -5,12 +5,18 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Panel que maneja la visualizacion del vuelto recibido
+ */
 public class PanelVueltoComprador extends JPanel {
     Font fuente;
     private static int valorVuelto;
     private static JLabel vuelto;
     private JLabel indicador;
 
+    /**
+     * Crea el panel y agrega sus componentes
+     */
     public PanelVueltoComprador(){
         try {
             fuente = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/RetroGaming.ttf")).deriveFont(13f);
@@ -44,6 +50,10 @@ public class PanelVueltoComprador extends JPanel {
         add(indicador);
     }
 
+    /**
+     * Metodo que asigna el vuelto
+     * @param v valor total del vuelto
+     */
     public static void setVuelto(int v){
         valorVuelto += v;
         vuelto.setText("$" + String.valueOf(valorVuelto));

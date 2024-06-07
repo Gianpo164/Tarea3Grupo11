@@ -7,12 +7,19 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * Panel que se encarga de dibujar las images de Sprite y rellenar el Deposito de Sprite
+ */
 public class Sprite extends JPanel {
 
     private Image imgSprite;
     private Deposito deposito;
     private int vecesRellenado;
 
+    /**
+     * Genera las imagenes de Sprite y rellena el deposito cuando es necesario
+     * @param dep Deposito de Sprite
+     */
     public Sprite(Deposito dep){
         super();
         deposito = dep;
@@ -33,6 +40,11 @@ public class Sprite extends JPanel {
             }
         });
     }
+
+    /**
+     * Dibuja los productos Sprite
+     * @param g the <code>Graphics</code> object to protect
+     */
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);

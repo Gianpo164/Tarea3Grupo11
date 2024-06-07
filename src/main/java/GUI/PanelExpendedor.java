@@ -5,6 +5,9 @@ import logica.Expendedor;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Panel que incluye todos los aspectos relacionados a comprar productos
+ */
 public class PanelExpendedor extends JPanel {
     private Image imagenExpendedor;
     private PanelRecogerProducto panelRecogerProducto;
@@ -12,6 +15,11 @@ public class PanelExpendedor extends JPanel {
     private PanelDepositoMonedas panelDepositoMonedas;
     private PanelVueltoExpendedor panelVueltoExpendedor;
 
+    /**
+     * Crea el panel y agrega sus componentes
+     * @param expendedor clase logica que representa un expendedor
+     * @param panelComp panel que relaciona los componentes del comprador
+     */
     public PanelExpendedor(Expendedor expendedor, PanelComprador panelComp) {
         super();
         imagenExpendedor = new ImageIcon(getClass().getClassLoader().getResource("Expendedor.png")).getImage();
@@ -46,6 +54,10 @@ public class PanelExpendedor extends JPanel {
     }
 
 
+    /**
+     * Metodo que dibuja los componentes del panel
+     * @param g the <code>Graphics</code> object to protect
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

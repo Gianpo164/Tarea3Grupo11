@@ -8,12 +8,19 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Panel que contiene los componentes relacionados con el producto CocaCola
+ */
 public class Producto1 extends JPanel{
     private JLabel precio;
     private JLabel codigo;
     private CocaCola CocaCola;
     private Font f;
 
+    /**
+     * Genera el panel que contiene los componentes necesarios para dibujar los productos CocaCola
+     * @param deposito contiene los productos CocaCola
+     */
     public Producto1(Deposito deposito) {
 
         super();

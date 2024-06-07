@@ -7,16 +7,23 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * Panel que se encarga de detectar y dibujar las monedas cuando se ingresan a el expendedor
+ */
 public class PanelDepositoMonedas extends JPanel {
     private IngresarMoneda ingresarMoneda;
     private MonedasIngresadas monedasIngresadas;
 
 
+    /**
+     * Genera el panel y los componentes necesarios para detectar y dibujar cuando se ingresa una moneda a el expendedor
+     * @param expendedor Clase logica que representa un expendedor
+     */
     public PanelDepositoMonedas(Expendedor expendedor){
         setBounds(370,384,117,101);
         setLayout(null);
         setOpaque(false);
-        ingresarMoneda = new IngresarMoneda(expendedor);
+        ingresarMoneda = new IngresarMoneda();
         monedasIngresadas = new MonedasIngresadas(expendedor);
         add(ingresarMoneda);
         add(monedasIngresadas);
@@ -37,6 +44,10 @@ public class PanelDepositoMonedas extends JPanel {
         });
     }
 
+    /**
+     * Dibuja las monedas ingresadas a el expendedor
+     * @param g the <code>Graphics</code> object to protect
+     */
     @Override
     public void paintComponent(Graphics g){
         monedasIngresadas.repaint();

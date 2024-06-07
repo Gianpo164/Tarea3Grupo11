@@ -8,11 +8,19 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Panel que contiene los componentes relacionados con el producto Snickers
+ */
 public class Producto4 extends JPanel{
     private JLabel precio;
     private JLabel codigo;
     private Snickers snickers;
     Font f;
+
+    /**
+     * Genera el panel que contiene los componentes necesarios para dibujar los productos Snickers
+     * @param deposito contiene los productos Snickers
+     */
     public Producto4(Deposito deposito){
         super();
         f = null;

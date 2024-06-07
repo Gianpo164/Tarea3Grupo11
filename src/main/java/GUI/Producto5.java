@@ -8,11 +8,19 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Panel que contiene los componentes relacionados con el producto Super8
+ */
 public class Producto5 extends JPanel{
     private JLabel precio;
     private JLabel codigo;
     private Super8 super8;
     Font f;
+
+    /**
+     * Genera el panel que contiene los componentes necesarios para dibujar los productos Super8
+     * @param deposito contiene los productos Super8
+     */
     public Producto5(Deposito deposito){
         super();
         f = null;

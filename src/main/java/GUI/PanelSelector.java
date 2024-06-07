@@ -7,12 +7,19 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * Panel que maneja el sistema de seleccion de productos
+ */
 public class PanelSelector extends JPanel {
     private Pantalla pantallaCodigo;
     private Comprador comprador;
     static String codigo;
 
 
+    /**
+     * @param expendedor clase logica que representa un expendedeor
+     * @param panelExpendededor panel que maneja el funcionamiento del expendedor
+     */
     public PanelSelector(Expendedor expendedor,PanelExpendedor panelExpendededor){
 
         setBounds(366,29,127,286);
@@ -63,6 +70,11 @@ public class PanelSelector extends JPanel {
             }
         });
     }
+
+    /**
+     * Retorna el codigo introducido
+     * @return codigo introducido
+     */
     public static String getCodigo(){
         return codigo;
     }

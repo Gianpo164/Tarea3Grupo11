@@ -8,11 +8,19 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Panel que contiene los componentes relacionados con el producto Sprite
+ */
 public class Producto2 extends JPanel{
     private JLabel precio;
     private JLabel codigo;
     private Sprite sprite;
     Font f;
+
+    /**
+     * Genera el panel que contiene los componentes necesarios para dibujar los productos Sprite
+     * @param deposito contiene los productos Sprite
+     */
     public Producto2(Deposito deposito){
         super();
 

@@ -10,6 +10,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Panel que simula el ingreso de monedas la expendedor
+ */
 public class MonedaIngresando extends JPanel implements ActionListener{
     private Image moneda100 = new ImageIcon(getClass().getClassLoader().getResource("RMoneda100(1).png")).getImage();
     private Image moneda500 = new ImageIcon(getClass().getClassLoader().getResource("RMoneda500(1).png")).getImage();
@@ -19,6 +22,9 @@ public class MonedaIngresando extends JPanel implements ActionListener{
     private int y;
     private int contador;
 
+    /**
+     * Crea el panel y asigna las caracteristicas de este
+     */
     public MonedaIngresando(){
         setBounds(27,20,32,32);
         setOpaque(false);
@@ -26,12 +32,19 @@ public class MonedaIngresando extends JPanel implements ActionListener{
         contador = 0;
     }
 
+    /**
+     * Metodo que permite repetir el uso de este panel
+     */
     public void resetPosition(){
         x = 5;
         y = 0;
     }
 
 
+    /**
+     * Metodo que dibuja la moneda introducida
+     * @param g the <code>Graphics</code> object to protect
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -43,6 +56,10 @@ public class MonedaIngresando extends JPanel implements ActionListener{
         }
     }
 
+    /**
+     * Genera la animacion de introducir moneda al usar esta
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e){
         setVisible(true);
