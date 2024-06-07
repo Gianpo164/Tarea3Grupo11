@@ -27,28 +27,24 @@ public class PanelVueltoExpendedor extends JPanel implements ActionListener {
         Bmoneda500 = new JButton();
         Bmoneda1000 = new JButton();
         Bmoneda1500 = new JButton();
-        Bmoneda100.setFocusable(false);
-        Bmoneda500.setFocusable(false);
-        Bmoneda1000.setFocusable(false);
-        Bmoneda1500.setFocusable(false);
-        Bmoneda100.setContentAreaFilled(false);
-        Bmoneda500.setContentAreaFilled(false);
-        Bmoneda1000.setContentAreaFilled(false);
-        Bmoneda1500.setContentAreaFilled(false);
-        Bmoneda100.addActionListener(this);
-        Bmoneda500.addActionListener(this);
-        Bmoneda1000.addActionListener(this);
-        Bmoneda1500.addActionListener(this);
-        Bmoneda100.setBorder(null);
-        Bmoneda500.setBorder(null);
-        Bmoneda1000.setBorder(null);
-        Bmoneda1500.setBorder(null);
+
+        ConfigurarButtons(Bmoneda100);
+        ConfigurarButtons(Bmoneda500);
+        ConfigurarButtons(Bmoneda1000);
+        ConfigurarButtons(Bmoneda1500);
 
         setLayout(new GridLayout(1, 4, 3,0));
         add(Bmoneda100);
         add(Bmoneda500);
         add(Bmoneda1000);
         add(Bmoneda1500);
+    }
+
+    private void ConfigurarButtons(JButton button){
+        button.setFocusable(false);
+        button.setContentAreaFilled(false);
+        button.addActionListener(this);
+        button.setBorder(null);
     }
 
     public void actionPerformed(ActionEvent e){

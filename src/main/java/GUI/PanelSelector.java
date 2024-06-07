@@ -30,7 +30,7 @@ public class PanelSelector extends JPanel {
         add(pantalla);
 
 
-        teclado.CancelarCompra.addMouseListener(new MouseAdapter() {
+        teclado.cancelarCompra.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e){
                 codigo = "";
@@ -49,7 +49,7 @@ public class PanelSelector extends JPanel {
                 }
             });
         }
-        teclado.Comprar.addMouseListener(new MouseAdapter() {
+        teclado.comprar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e){
                 try {
