@@ -4,18 +4,35 @@ import logica.Deposito;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-public class CocaCola extends JPanel {
+public class PanelCocaCola extends JPanel {
     private Image imgCocaCola;
     private Deposito deposito;
+    private int vecesRellenado;
 
-    public CocaCola(Deposito dep){
+    public PanelCocaCola(Deposito dep){
         super();
         deposito = dep;
         imgCocaCola = new ImageIcon(getClass().getClassLoader().getResource("CocaCola.png")).getImage();
         setBounds(0,0,141,81);
-        setBackground(new Color(0,200,0,0));
+        setOpaque(false);
+
+        this.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e){
+                if (deposito.getSizeDeposito() == 0) {
+                    for (int i = 110 + vecesRellenado * 10; i < 120 + vecesRellenado * 10; i++) {
+                        deposito.addObject(new logica.CocaCola(i));
+                    }
+                    vecesRellenado++;
+                }
+                repaint();
+            }
+        });
     }
+
 
     @Override
     public void paintComponent(Graphics g){

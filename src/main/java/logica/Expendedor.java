@@ -9,7 +9,7 @@ public class Expendedor {
     private DepositoMonedas monCo;
     private Producto productoComprado;
     private EnumProductos productoPedido;
-    private Producto productoRetirado;
+    private Producto productoRetirado = new CocaCola(0);
     private int vuelto;
 
     /**
@@ -105,8 +105,10 @@ public class Expendedor {
     }
 
     public void recogerProducto(){
-        productoRetirado = productoComprado;
-        productoComprado = null;
+        if (productoComprado != null) {
+            productoRetirado = productoComprado;
+            productoComprado = null;
+        }
     }
 
     public Producto getProductoRetirado(){
@@ -134,7 +136,7 @@ public class Expendedor {
 
     public void insertarMoneda(Moneda x){
         monCo.addObject(x);
-        System.out.println(x.getValor());
+        System.out.println("Serie: " + x.getSerie());
     }
 
     public Deposito getDeposito(int x){

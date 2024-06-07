@@ -18,6 +18,7 @@ public class PanelComprador extends JPanel {
     private final Image imgSuper8 = new ImageIcon(getClass().getClassLoader().getResource("Super8.png")).getImage();
     private PanelVueltoComprador panelVueltoComprador;
     private JLabel nombreProductoComprado;
+    private JLabel serieProductoComprado;
     private SelectorMonedas selecmon;
     private Expendedor expendedor;
     private logica.Producto producto;
@@ -40,14 +41,20 @@ public class PanelComprador extends JPanel {
         panelVueltoComprador = new PanelVueltoComprador();
         selecmon = new SelectorMonedas();
 
-        nombreProductoComprado = new JLabel("CocaCola", SwingConstants.CENTER);
+        nombreProductoComprado = new JLabel("", SwingConstants.CENTER);
         nombreProductoComprado.setVisible(true);
-
-        nombreProductoComprado.setBounds(45, 223, 80, 30);
+        nombreProductoComprado.setBounds(45, 225, 80, 25);
         nombreProductoComprado.setFont(font);
         nombreProductoComprado.setForeground(Color.black);
 
+        serieProductoComprado = new JLabel("", SwingConstants.CENTER);
+        serieProductoComprado.setVisible(true);
+        serieProductoComprado.setBounds(45, 238, 80, 35);
+        serieProductoComprado.setFont(font);
+        serieProductoComprado.setForeground(Color.black);
+
         add(nombreProductoComprado);
+        add(serieProductoComprado);
         add(selecmon);
         add(panelVueltoComprador);
     }
@@ -57,9 +64,12 @@ public class PanelComprador extends JPanel {
 
         producto = expendedor.getProductoRetirado();
 
-        nombreProductoComprado.setText(expendedor.GetNombreProducto());
+        if (expendedor.getProductoRetirado().getSerie() != 0) {
+            nombreProductoComprado.setText(expendedor.GetNombreProducto());
+            serieProductoComprado.setText("Serie: " + String.valueOf(expendedor.getProductoRetirado().getSerie()));
+        }
 
-        if(producto == null){
+        if(producto == null || expendedor.getProductoRetirado().getSerie() == 0){
         }else if(producto.getClass() == logica.CocaCola.class){
             g.drawImage(imgCocaCola, 70, 168, null);
         }else if(producto.getClass() == logica.Sprite.class){
