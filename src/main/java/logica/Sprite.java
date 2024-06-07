@@ -7,10 +7,10 @@ public class Sprite extends Producto{
 
     /**
      * Crea una Sprite
-     * @param x Serie
+     * @param serie Serie
      */
-    public Sprite(int x){
-        super(x);
+    public Sprite(int serie){
+        super(serie);
     }
 
     /**
@@ -23,8 +23,8 @@ public class Sprite extends Producto{
     }
 
     /**
-     * Retorna el nombre del producto consumido
-     * @return El nombre del producto consumido
+     * Retorna el nombre del producto
+     * @return El nombre del producto
      */
     @Override
     public String consumir(){

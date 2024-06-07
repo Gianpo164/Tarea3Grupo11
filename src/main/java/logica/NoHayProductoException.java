@@ -1,28 +1,25 @@
 package logica;
 
 /**
- * Excepcion que maneja un mensaje de error personalizado y devuelve una modeda. Sera utilizado en Expendedor
+ * Excepcion que maneja un mensaje de error personalizado. Sera utilizado en Expendedor
  */
 public class NoHayProductoException extends Exception{
-    /**
-     * Almacena la moneda devuelta
-     */
     private DepositoMonedas depositoMonedas;
     private String monedas ="";
 
     /**
      * Crea la excepcion para la situacion especificada
      * @param errorMessage Mensaje de error que sera entregado
-     * @param m Moneda que sera devuelta
+     * @param depMonedas Deposito de monedas utilizado para devolver el valor de las monedas
      */
-    public NoHayProductoException(String errorMessage, DepositoMonedas m){
+    public NoHayProductoException(String errorMessage, DepositoMonedas depMonedas){
         super(errorMessage);
-        depositoMonedas = m;
+        depositoMonedas = depMonedas;
     }
 
     /**
-     * Devuelve el mensaje de error
-     * @return mensaje de error y valor de la moneda
+     * Retorna el mensaje de error
+     * @return El mensaje de error
      */
     @Override
     public String getMessage() {

@@ -1,11 +1,10 @@
 package logica;
 
 /**
- * Producto que sera expenedido
+ * Producto que sera expendido
  */
 public abstract class Producto {
     private int serie;
-    private int valor;
 
     /**
      * Genera un producto con la serie otorgada

@@ -34,9 +34,7 @@ public class Expendedor {
 
     /**
      * Se asegura de que el producto y el vuelto sean el correcto
-     * @param m para corroborar que se ingreso el dinero suficiente para efectuar la compra
-     * @param producto para seleccionar el producto a comprar
-     * @return el producto pedido
+     * @param codigoProducto para seleccionar el producto a comprar
      * @throws NoHayProductoException si no quedan productos del que se pide
      * @throws PagoIncorrectoException si no se ingresa una moneda
      * @throws PagoInsuficienteException si con la moneda ingresada no alcanza a comprar el producto
@@ -99,6 +97,9 @@ public class Expendedor {
         }
     }
 
+    /**
+     * Remplaza el producto del productoDeposito por el del productoComprado
+     */
     public void productoComprado(){
         if (productoComprado != null) {
             productoDeposito = productoComprado;
@@ -106,6 +107,9 @@ public class Expendedor {
         }
     }
 
+    /**
+     * Remplaza el producto del productoRetirado por el del productoDeposito
+     */
     public void recogerProducto(){
         if (productoDeposito != null) {
             productoRetirado = productoDeposito;
@@ -113,44 +117,72 @@ public class Expendedor {
         }
     }
 
+    /**
+     * Retorna el producto del productoDeposito
+     * @return El producto del productoDeposito
+     */
     public Producto getProductoDeposito() {
         return productoDeposito;
     }
 
+    /**
+     * Retorna el producto del productoRetirado
+     * @return El producto del productoRetirado
+     */
     public Producto getProductoRetirado(){
         return productoRetirado;
     }
 
-    public String GetNombreProducto(){
+    /**
+     * Retorna el nombre del producto que el usuario retiro
+     * @return El nombre del producto que el usuario retiro
+     */
+    public String getNombreProducto(){
         if (productoRetirado == null){
             return "";
         }
         return productoRetirado.consumir();
     }
     /**
-     * Saca las monedas del deposito de monedas
-     * @return el vuelto que se genera en la compra
+     * Retorna el valor de la moneda en el indice x del depositoDeMonedas
+     * @param x Almacina el indice
+     * @return El valor de la moneda en el indice x del depositoDeMonedas
      */
     public int getVuelto(int x) {
         Moneda m = monVu.getObject(x);
         return m.getValor();
     }
 
-    public int getValorVuelto(){
-        return monVu.getValorTotal();
+    /**
+     * Ingresa una Moneda al deposito que almacena las monedas para comprar productos
+     * @param moneda Moneda ingresada
+     */
+    public void insertarMoneda(Moneda moneda){
+        monCo.addObject(moneda);
+        System.out.println("Serie moneda insertada: " + moneda.getSerie());
     }
 
-    public void insertarMoneda(Moneda x){
-        monCo.addObject(x);
-        System.out.println("Serie moneda insertada: " + x.getSerie());
-    }
-
+    /**
+     * Retorna el deposito con el indice pedido
+     * @param x indice
+     * @return El deposito con el indice pedido
+     */
     public Deposito getDeposito(int x){
         return depositos[x];
     }
+
+    /**
+     * Retorna el deposito que almacena las monedas para comprar productos
+     * @return El deposito que almacena las monedas para comprar productos
+     */
     public DepositoMonedas getMonCo(){
         return monCo;
     }
+
+    /**
+     * Retorna el deposito que almacena las monedas de vuelto
+     * @return El deposito que almacena las monedas de vuelto
+     */
     public DepositoMonedas getMonVu(){
         return monVu;
     }

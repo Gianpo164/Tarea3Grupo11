@@ -32,6 +32,11 @@ public class Deposito<T> {
         }
         return deposito.remove(x);
     }
+
+    /**
+     * Retorna el tamaño del deposito
+     * @return el tamaño del deposito
+     */
     public int getSizeDeposito() {
         return deposito.size();
     }
