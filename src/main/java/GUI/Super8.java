@@ -23,7 +23,7 @@ public class Super8 extends JPanel {
             @Override
             public void mouseReleased(MouseEvent e){
                 if (deposito.getSizeDeposito() == 0) {
-                    for (int i = 110 + vecesRellenado * 10; i < 120 + vecesRellenado * 10; i++) {
+                    for (int i = 510 + vecesRellenado * 10; i < 520 + vecesRellenado * 10; i++) {
                         deposito.addObject(new logica.Super8(i));
                     }
                     vecesRellenado++;

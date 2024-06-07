@@ -24,7 +24,7 @@ public class Fanta extends JPanel {
             @Override
             public void mouseReleased(MouseEvent e){
                 if (deposito.getSizeDeposito() == 0) {
-                    for (int i = 110 + vecesRellenado * 10; i < 120 + vecesRellenado * 10; i++) {
+                    for (int i = 310 + vecesRellenado * 10; i < 320 + vecesRellenado * 10; i++) {
                         deposito.addObject(new logica.Fanta(i));
                     }
                     vecesRellenado++;

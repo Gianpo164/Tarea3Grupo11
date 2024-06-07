@@ -13,7 +13,9 @@ public class Ventana extends JFrame {
 
         add(panelPrincipal);
         setVisible(true);
-        //setResizable(false);
+        setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        pack();
+        setLocationRelativeTo(null);
     }
 }
