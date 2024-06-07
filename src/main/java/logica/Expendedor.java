@@ -53,7 +53,6 @@ public class Expendedor {
 
         if (productoPedido == null){
             monVu.getDepositoMonedas().addAll(monCo.getDepositoMonedas());
-            monCo.getDepositoMonedas().clear();
             throw new ProductoIncorrectoException("No existe el producto pedido", monVu);
         }
         if (monCo.getDepositoMonedas().isEmpty()) {
@@ -62,11 +61,11 @@ public class Expendedor {
 
         if (depositos[productoPedido.ordinal()].getSizeDeposito() == 0) {
             monVu.getDepositoMonedas().addAll(monCo.getDepositoMonedas());
-            monCo.getDepositoMonedas().clear();
             throw new NoHayProductoException("No hay producto", monVu);
         }
 
         if (monCo.getValorTotal() >= productoPedido.precio){
+            System.out.println("test");
             while (monCo.getValorTotal() - productoPedido.precio - vuelto >= 1500) {
                 monVu.addObject(new Moneda1500());
                 vuelto += 1500;
@@ -86,15 +85,16 @@ public class Expendedor {
                 monVu.addObject(new Moneda100());
                 vuelto += 100;
             }
+            vuelto = 0;
 
             productoComprado = depositos[productoPedido.ordinal()].getObject(0);
-            monCo.getDepositoMonedas().clear();
         }
         else {
             monVu.getDepositoMonedas().addAll(monCo.getDepositoMonedas());
             monCo.getDepositoMonedas().clear();
             throw new PagoInsuficienteException("El producto cuesta mas de lo que se entrego", monVu);
         }
+        monCo.getDepositoMonedas().clear();
     }
 
     public Producto getProductoComprado(){
